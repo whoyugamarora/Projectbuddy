@@ -1,4 +1,4 @@
-This is a markdown file for the COMP-370 project "ProjectBuddy".
+This is a README file for the COMP-370 project "ProjectBuddy".
 
 Created by Team "IA to IT"
 - Yugam Arora 		(300177957)
