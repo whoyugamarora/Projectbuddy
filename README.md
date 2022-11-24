@@ -1,5 +1,7 @@
 This is a README file for the COMP-370 project "ProjectBuddy".
 
+Dev has started. Cheers.
+
 Created by Team "IA to IT"
 - Yugam Arora 		(300177957)
 - Pratham Pachchigar 	(300177735)
