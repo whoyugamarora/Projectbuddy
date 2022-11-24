@@ -1,0 +1,29 @@
+import Avatar, { ConfigProvider } from 'react-avatar';
+import React from 'react';
+import "./Sidebar.css";
+
+const Sidebar = () =>  {
+  return (
+    <div className="sidebar">   
+     <div className="sidebar_top">
+        <img src="" alt=""/>
+        <Avatar className = "sidebar_avatar" size={80} round="20px"/>
+        <h3> Pratham Pachchigar</h3>
+        <h6>prathampachchigar@student.ufv.ca</h6>
+        </div> 
+
+    <div className="sidebar_stats">
+        <div className="sidebar_stats">
+            <p>views</p>
+        </div>
+
+    <div className="sidebar_bottom">
+        <p>My Skills (Dropdown or something?)</p>
+    </div>
+
+    </div>
+    </div>  
+  );
+}
+
+export default Sidebar;
