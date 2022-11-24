@@ -1,13 +1,13 @@
 import React from 'react';
 //import './App.css';
-import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import Home from './pages';
 import About from './pages/about';
 import Services from './pages/services';
 import Contact from './pages/contact';
 import SignUp from './pages/signup';
-import Sidebar from './components/Sidebar';
 
 function App() {
   return (

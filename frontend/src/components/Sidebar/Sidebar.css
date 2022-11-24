@@ -1,10 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100vw;
+    height: 80vh;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 0.3rem ;
+}
+
 .sidebar {
-    position: sticky;
     top: 80px;
-    flex: 0.2;
     border-radius: 10px;
     text-align: center;
-    height: fit-content;
+    height: 85vh;
+    width: calc(23vw - 5px);
+    text-align: center;
+    background-color:darkgray;
+}
+
+.main {
+    width: calc(54vw - 5px);
+    text-align: center;
+    background-color:aqua;
+    border-radius: 10px;
 }
 
 .sidebar_avatar {
@@ -16,9 +35,7 @@
     flex-direction: column;
     align-items: center;
     border: 1px solid lightskyblue;
-    border-bottom: 0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-color:darkgray;
     padding-bottom: 10px;
 }
