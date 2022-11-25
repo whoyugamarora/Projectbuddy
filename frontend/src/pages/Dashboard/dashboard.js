@@ -1,8 +1,8 @@
 import Avatar, { ConfigProvider } from 'react-avatar';
 import React from 'react';
-import './Sidebar.css';
+import './dashboard.css';
 
-const Sidebar = () => {
+const Dashboard = () => {
   return (
     <div className="container">
       <div className="sidebar">
@@ -34,4 +34,4 @@ const Sidebar = () => {
   );
 }
 
-export default Sidebar;
+export default Dashboard;
