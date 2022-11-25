@@ -1,57 +1,40 @@
-import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { borderRadius } from '@mui/system';
 
-const Projectcard = () => {
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
+
+export default function BasicCard() {
   return (
-    <div
-    className='wrapper'
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
-        
-      <h1>Hello</h1>
-    </div>
+    <Card sx={{ minWidth: 275, width: 50, margin: 2, borderRadius: 5 }}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+          Name
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          position
+        </Typography>
+        <Typography variant="body2">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small" sx={{borderRadius: 5}}>Connect</Button>
+      </CardActions>
+    </Card>
   );
-};
-
-function App() {
-    return (
-      <div className="wrapper">
-        <Card
-          img="https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-          title="The Everyday Salad"
-          description="Take your boring salads up a knotch. This recipe is perfect for lunch
-            and only contains 5 ingredients!"
-        />
-  
-        <Card
-          img="https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-          title="Simple Risotto"
-          description="Fear Risotto no more! This simple recipe is perfect for family dinners."
-        />
-  
-        <Card
-          img="https://images.unsplash.com/photo-1529928520614-7c76e2d99740?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-          title="Baked Cod with Vegetables"
-          description="Baked Cod with Vegetables. 30 minute meal!"
-        />
-      </div>
-    );
-  }
-function Card(props) {
-    return (
-      <div className="card">
-        <div className="card__body">
-          <img src={props.img} class="card__image" />
-          <h2 className="card__title">{props.title}</h2>
-          <p className="card__description">{props.description}</p>
-        </div>
-        <button className="card__btn">View Recipe</button>
-      </div>
-    );
-  }
-  ReactDOM.render(<App />, document.getElementById("root"));
-
+}
