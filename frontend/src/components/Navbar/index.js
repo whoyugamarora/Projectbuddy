@@ -7,12 +7,16 @@ import {
   NavBtn,
   NavBtnLink
 } from './NavbarElements';
+import { auth, db, logout } from "../../pages/firebase";
+import Avvvatars from 'avvvatars-react';
+
+
 
 const Navbar = () => {
   return (
     <>
       <Nav>
-        <NavLink to='/'>
+        <NavLink to='/dashboard'>
           <img src={('../../images/logo.svg')} alt='logo' />
         </NavLink>
         <Bars />
@@ -28,12 +32,14 @@ const Navbar = () => {
           </NavLink>
           <NavLink to='/sign-up' activeStyle>
             Sign Up
+            
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+        <Avvvatars value="tim@apple.com" />
+        <NavBtnLink to='/' onClick={logout}>Log out</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

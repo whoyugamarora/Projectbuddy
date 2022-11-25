@@ -1,7 +1,11 @@
 import React from 'react';
+import Navbar from '../components/Navbar/index';
+
 
 const Contact = () => {
   return (
+    <div>
+      <Navbar />
     <div
       style={{
         display: 'flex',
@@ -11,6 +15,7 @@ const Contact = () => {
       }}
     >
       <h1>Contact Us</h1>
+    </div>
     </div>
   );
 };
