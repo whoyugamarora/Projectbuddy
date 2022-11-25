@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="sidebar">
         <div className="sidebar_top">
           <img src="" alt="" />
-          <Avatar className="sidebar_avatar" size={80} round="20px" />
+          <Avatar className="sidebar_avatar" size={80} round={true} />
           <h3> Pratham Pachchigar</h3>
           <h6>prathampachchigar@student.ufv.ca</h6>
         </div>
