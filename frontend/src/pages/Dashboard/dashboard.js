@@ -9,15 +9,19 @@ const Dashboard = () => {
     <div>
       <Navbar />
       <div className="container">
-         
-         <div className="sidebar one">
-          <p>HDBFVHJBDFJVBDFHJVBDFJVBDJFVBDJFIKASDFUBADFJKLHBSDFGVKGHSDBFVKJHB</p>
+
+        <div className="sidebar">
+          <div class="sidebar-avatar">
+            <p>Hi, My name is Yugam
+              Hi, My name is Yugam</p>
+          </div>
         </div>
-        
+
         <div class="main">
-        </div>
-        
-        <div class="sidebar two">
+          <div class="main-content">
+            <p>Hi, My name is Yugam
+              Hi, My name is Yugam</p>
+          </div>
         </div>
 
       </div>
