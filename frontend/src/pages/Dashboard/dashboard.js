@@ -1,26 +1,42 @@
 import Navbar from '../../components/Navbar/index';
+import { auth } from "../firebase";
 import React from 'react';
-import Avvvatars from 'avvvatars-react'
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import './dashboard.css';
 
 
-const Dashboard = () => {
+const Dashboard = ({ user }) => {
   return (
     <div>
       <Navbar />
       <div className="container">
 
         <div className="sidebar">
-          <div class="sidebar-avatar">
-            <p>Hi, My name is Yugam
-              Hi, My name is Yugam</p>
+          <div className="sidebar-avatar">
+              <Card.Body>
+                <Card.Title>Welcome</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted displayname">
+                  {user.displayName}
+                </Card.Subtitle>
+                <img src={user.photoURL} alt=""  />
+                <Button
+                  style={{ margin: '5%' }}
+                  variant="outline-danger"
+                  type="submit"
+                  id="signbtn"
+                  onClick={() => auth.signOut()}
+                >
+                  Sign Out
+                </Button>
+              </Card.Body>
           </div>
         </div>
 
-        <div class="main">
-          <div class="main-content">
-            <p>Hi, My name is Yugam
-              Hi, My name is Yugam</p>
+        <div className="main">
+          <div className="main-content">
+
+
           </div>
         </div>
 

@@ -9,6 +9,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   padding: 0.5rem calc((100vw - 1000px) / 2);
   z-index: 10;
+  font-size: 0.9rem;
 `;
 
 export const NavLink = styled(Link)`
@@ -76,6 +77,7 @@ export const NavBtnLink = styled(Link)`
   background: #256ce1;
   padding: 10px 22px;
   color: #fff;
+  font-size: 0.8rem;
   outline: none;
   border: none;
   cursor: pointer;

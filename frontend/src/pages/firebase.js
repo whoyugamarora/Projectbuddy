@@ -1,44 +1,33 @@
-import { initializeApp } from "firebase/app";
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signOut,
-} from "firebase/auth";
-import {
-  getFirestore,
-  query,
-  getDocs,
-  collection,
-  where,
-  addDoc,
-} from "firebase/firestore";
+import firebase from "firebase/compat/app";
+import { getFirestore, collection, addDoc, where, query, getDocs} from "firebase/firestore"
+import "firebase/compat/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAQvTxUZ3Coa5tWom-M0DJZVdcktdX4GEU",
-    authDomain: "projectbuddy-ufv.firebaseapp.com",
-    projectId: "projectbuddy-ufv",
-    storageBucket: "projectbuddy-ufv.appspot.com",
-    messagingSenderId: "1025724302770",
-    appId: "1:1025724302770:web:c887f2845c2974134150ab"
+  // Your Config Goes Here
+  apiKey: "AIzaSyAQvTxUZ3Coa5tWom-M0DJZVdcktdX4GEU",
+  authDomain: "projectbuddy-ufv.firebaseapp.com",
+  projectId: "projectbuddy-ufv",
+  storageBucket: "projectbuddy-ufv.appspot.com",
+  messagingSenderId: "1025724302770",
+  appId: "1:1025724302770:web:c887f2845c2974134150ab"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const db = getFirestore();
 
-const googleProvider = new GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
 
-const signInWithGoogle = async () => {
+export const auth = firebase.auth();
+export default firebase;
+
+export const signInWithGoogle = async () => {
   try {
-    const res = await signInWithPopup(auth, googleProvider);
+    const res = await auth.signInWithPopup(provider);
     const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
+    const userRef = collection(db, "users");
+    const result = await getDocs(query(userRef, where("uid", "==", user.uid)));
+    if (result.empty) {
       await addDoc(collection(db, "users"), {
         uid: user.uid,
         name: user.displayName,
@@ -47,23 +36,21 @@ const signInWithGoogle = async () => {
       });
     }
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
 
-const logInWithEmailAndPassword = async (email, password) => {
+export const signInWithEmailAndPassword = async (email, password) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    await auth.signInWithEmailAndPassword(email, password);
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+export const registerWithEmailAndPassword = async (name, email, password) => {
   try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const res = await auth.createUserWithEmailAndPassword(email, password);
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
@@ -72,31 +59,19 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       email,
     });
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
 
-const sendPasswordReset = async (email) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
-
-const logout = () => {
-  signOut(auth);
-};
-
-export {
-  auth,
-  db,
-  signInWithGoogle,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  sendPasswordReset,
-  logout,
-};
+// const sendPasswordResetEmail = async (email) => {
+//   try {
+//     await auth.sendPasswordResetEmail(email);
+//     alert("Password reset link sent!");
+//   } catch (err) {
+//     console.error(err);
+//     alert(err.message);
+//   }
+// };
+// const logout = () => {
+//   auth.signOut();
+// };

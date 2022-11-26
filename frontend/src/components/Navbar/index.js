@@ -7,12 +7,12 @@ import {
   NavBtn,
   NavBtnLink
 } from './NavbarElements';
-import { auth, db, logout } from "../../pages/firebase";
-import Avvvatars from 'avvvatars-react';
+import { auth } from '../../pages/firebase';
+import { FaUserAlt } from "react-icons/fa";
 
 
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   return (
     <>
       <Nav>
@@ -38,8 +38,7 @@ const Navbar = () => {
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-        <Avvvatars value="tim@apple.com" />
-        <NavBtnLink to='/' onClick={logout}>Log out</NavBtnLink>
+        <NavBtnLink to='/myaccount'>  <FaUserAlt />Account</NavBtnLink>
         </NavBtn>
       </Nav>
     </>
