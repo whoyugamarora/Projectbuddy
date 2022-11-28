@@ -1,32 +1,33 @@
 body {
-    background-color:white;
+    background-color:rgba(0,121,211,0.2);
+    width: 100vw;
 }
 
 
-.container {
+.containerx {
     display: flex;
     flex-direction: row;
-    width: 90vw;
-    height: calc(100vh- 60px);
-    margin-top: 2vh;
+    justify-content: center;
+    width: 98vw;
+    padding: 2vh 0px 0px 0px;
+    height: calc(100vh - 65px);
+    gap: 1vw;
     margin-inline: auto;
-    gap: 2vw;
 }
 
 .sidebar {
     border-radius: 20px;
-    height: 86vh;
-    width: 20vw;
+    height: calc(96vh - 65px) ;
+    width: 17vw;
     background-color:white;
     overflow-wrap:break-word;
-    margin: auto;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .main {
     background-color:white;
-    width: 70vw;
-    height: 86vh;
+    width: 100%;
+    height: calc(96vh - 65px) ;
     border-radius: 20px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -42,12 +43,28 @@ body {
     padding-top: 2rem ;
 }
 
+.userpic {
+    width: 65%;
+    height: 19%;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+}
+
 
 .main-content {
     width: auto;
     height: auto;
-    margin: 1rem;
+    padding: 1rem;
+}
 
+
+.cardbody {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  
 }
 
 /*

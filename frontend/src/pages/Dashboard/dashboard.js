@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import React from 'react';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import ProjectCard from '../../components/Projectcard/projectcard';
 import './dashboard.css';
 
 
@@ -10,33 +11,25 @@ const Dashboard = ({ user }) => {
   return (
     <div>
       <Navbar />
-      <div className="container">
-
+      <div className="containerx">
         <div className="sidebar">
           <div className="sidebar-avatar">
-              <Card.Body>
+              <Card.Body className='cardbody'>
                 <Card.Title>Welcome</Card.Title>
+                <br />
+                <img className ="userpic" src={user.photoURL} alt=""  />
+                <br />
                 <Card.Subtitle className="mb-2 text-muted displayname">
-                  {user.displayName}
+                  Logged in as {user.displayName}
+                
                 </Card.Subtitle>
-                <img src={user.photoURL} alt=""  />
-                <Button
-                  style={{ margin: '5%' }}
-                  variant="outline-danger"
-                  type="submit"
-                  id="signbtn"
-                  onClick={() => auth.signOut()}
-                >
-                  Sign Out
-                </Button>
+                
               </Card.Body>
           </div>
         </div>
 
         <div className="main">
           <div className="main-content">
-
-
           </div>
         </div>
 

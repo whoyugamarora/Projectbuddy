@@ -5,20 +5,26 @@ import {
   Bars,
   NavMenu,
   NavBtn,
-  NavBtnLink
+  NavBtnLink,
+  Heading,
+  HeadingLink
 } from './NavbarElements';
-import { auth } from '../../pages/firebase';
-import { FaUserAlt } from "react-icons/fa";
+import { auth } from "../../pages/firebase";
+import { GoSignOut } from "react-icons/go";
+import { BiUser } from "react-icons/bi"
+import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
 
 
 
-const Navbar = ({user}) => {
+const Navbar = ({ user }) => {
   return (
     <>
       <Nav>
-        <NavLink to='/dashboard'>
-          <img src={('../../images/logo.svg')} alt='logo' />
-        </NavLink>
+        <Heading><HeadingLink to='/'>
+          ProjectBuddy
+          </HeadingLink>
+        </Heading>
         <Bars />
         <NavMenu>
           <NavLink to='/about' activeStyle>
@@ -30,16 +36,31 @@ const Navbar = ({user}) => {
           <NavLink to='/contact-us' activeStyle>
             Contact Us
           </NavLink>
-          <NavLink to='/sign-up' activeStyle>
-            Sign Up
-            
+          <NavLink to='/listings' activeStyle>
+            Listings
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        <NavBtn>
-        <NavBtnLink to='/myaccount'>  <FaUserAlt />Account</NavBtnLink>
-        </NavBtn>
+        <NavMenu>
+          <NavLink to='/newlisting' activeStyle>
+            Add New
+          </NavLink>
+          <NavBtn>
+            <NavBtnLink to='/myaccount'> <BiUser /> Account</NavBtnLink>
+            <Button
+                  style={{fontSize: '0.85rem', padding:'8px'}}
+                  variant="outline-danger"
+                  type="submit"
+                  id="signbtn"
+                  onClick={() => auth.signOut()}
+                >
+                  <GoSignOut /> 
+                  Sign Out
+                </Button>
+          </NavBtn>
+        </NavMenu>
+
       </Nav>
     </>
   );
