@@ -37,3 +37,12 @@
     margin-top: 7px;
   }
   
+
+  .goback {
+    display: grid;
+    height: 20vh;
+    width: 100vw;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: 30px;
+  }

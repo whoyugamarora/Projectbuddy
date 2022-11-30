@@ -123,10 +123,17 @@ const Login = () => {
                   </div>
                 </Card.Body>
               </Card>
+             
             </div>
           </div>
         </div>
-        <div className="col-col-2"></div>
+        <div className="goback">
+          <Button
+            variant="outline-danger"
+           type="click"
+           href='/'
+            >Go Back</Button>
+         </div>
       </div>
     </div>
   );

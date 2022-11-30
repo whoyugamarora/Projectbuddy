@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard/dashboard';
 import About from './pages/about';
 import Services from './pages/services';
 import Contact from './pages/contact';
+import Home from './pages/Home/home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import firebase  from '../src/pages/firebase';
 
@@ -23,7 +24,7 @@ import firebase  from '../src/pages/firebase';
   return (
     <>
       <Routes>
-        <Route path='/' element ={user ? <Dashboard user={user} /> : <Login/> } />
+        <Route path='/' element = { <Home/> } />
         <Route path='/dashboard' element ={user ? <Dashboard user={user} /> : <Login/> } />
         <Route path='/about' element ={user ? <About user={user} /> : <Login/> } />
         <Route path='/services' element ={<Services />} />

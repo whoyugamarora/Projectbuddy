@@ -17,7 +17,7 @@ const Dashboard = ({ user }) => {
               <Card.Body className='cardbody'>
                 <Card.Title>Welcome</Card.Title>
                 <br />
-                <img className ="userpic" src={user.photoURL} alt=""  />
+                <img className ="userpic" src={user.photoURL} alt="User Image"  />
                 <br />
                 <Card.Subtitle className="mb-2 text-muted displayname">
                   Logged in as {user.displayName}
