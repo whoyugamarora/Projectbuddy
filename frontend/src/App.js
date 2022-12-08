@@ -1,33 +1,40 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
-import Navbar from './components/Navbar';
-<<<<<<< HEAD
-import Home from './pages';
-=======
+import Login from './pages/Login/login';
 import Dashboard from './pages/Dashboard/dashboard';
->>>>>>> 606389e7b8b4d2bc176eae800c5564befdd1a3d2
 import About from './pages/about';
 import Services from './pages/services';
 import Contact from './pages/contact';
-import SignUp from './pages/signup';
+import Home from './pages/Home/home';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import firebase  from '../src/pages/firebase';
 
-function App() {
+
+
+  function App() {
+    const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      firebase.auth().onAuthStateChanged(user => {
+        setUser(user);
+      })
+    }, [])
+
   return (
     <>
-    <Navbar />
       <Routes>
-        <Route path='/' element ={<Dashboard />} />
-        <Route path='/about' element ={<About />} />
+        <Route path='/' element = { <Home/> } />
+        <Route path='/dashboard' element ={user ? <Dashboard user={user} /> : <Login/> } />
+        <Route path='/about' element ={user ? <About user={user} /> : <Login/> } />
         <Route path='/services' element ={<Services />} />
         <Route path='/contact-us' component={Contact} />
-        <Route path='/sign-up' component={SignUp} />
       </Routes>
-<<<<<<< HEAD
-    </Router>
-=======
+     
     </>
->>>>>>> 606389e7b8b4d2bc176eae800c5564befdd1a3d2
+
+    
   );
 }
+
 export default App;

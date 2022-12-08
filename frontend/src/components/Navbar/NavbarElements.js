@@ -4,11 +4,17 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
   background: #313131;
-  height: 60px;
+  height: 65px;
+  width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around ;
+  align-items: center;
   padding: 0.5rem calc((100vw - 1000px) / 2);
   z-index: 10;
+  font-size: 0.95rem;
+  margin: auto;
+  padding: 1rem;
+  overflow: hidden;
 `;
 
 export const NavLink = styled(Link)`
@@ -20,10 +26,15 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
+  
+  &:hover {
+    transition: all 0.2s ease-in-out;
+
   &.active {
     color: #15cdfc;
   }
 `;
+
 
 export const Bars = styled(FaBars)`
   display: none;
@@ -59,8 +70,9 @@ export const NavMenu = styled.div`
 
 export const NavBtn = styled.nav`
   display: flex;
-  align-items: center;
+  align-items: space-around;
   margin-right: 24px;
+  justify-content:space-evenly;
 
   /* Third Nav */
   /* justify-content: flex-end;
@@ -76,11 +88,13 @@ export const NavBtnLink = styled(Link)`
   background: #256ce1;
   padding: 10px 22px;
   color: #fff;
+  font-size: 0.85rem;
   outline: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  margin-inline: 1rem;
 
   /* Second Nav */
   margin-left: 24px;
@@ -90,4 +104,24 @@ export const NavBtnLink = styled(Link)`
     background: #fff;
     color: #010606;
   }
+`;
+
+export const Button = styled.nav`
+  font-size: 0.8rem;
+`;
+
+export const Heading = styled.h5`
+  font-size: 1.3rem;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  margin: 0;
+`;
+
+export const HeadingLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
 `;

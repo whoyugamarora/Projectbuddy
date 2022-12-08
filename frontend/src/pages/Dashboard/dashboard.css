@@ -1,38 +1,91 @@
-.container {
+body {
+    background-color:rgba(0,121,211,0.2);
+    width: 100vw;
+}
+
+
+.containerx {
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
-    width: 80vw;
-    height: calc(100vh- 60px);
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 0.5rem ;
+    justify-content: center;
+    width: 98vw;
+    padding: 2vh 0px 0px 0px;
+    height: calc(100vh - 65px);
+    gap: 1vw;
     margin-inline: auto;
 }
 
 .sidebar {
-    top: 80px;
-    border-radius: 10px;
-    text-align: center;
-    height: 87vh;
-    width: calc(20vw - 7px);
-    text-align: center;
+    border-radius: 20px;
+    height: calc(96vh - 65px) ;
+    width: 17vw;
     background-color:white;
+    overflow-wrap:break-word;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .main {
-    width: calc(40vw - 7px);
-    height: 87vh;
+    background-color:white;
+    width: 100%;
+    height: calc(96vh - 65px) ;
+    border-radius: 20px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.sidebar-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: inherit;
+    height: inherit;
     text-align: center;
+    padding-top: 2rem ;
+}
+
+.userpic {
+    width: 65%;
+    height: 19%;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+}
+
+
+.main-content {
+    width: auto;
+    height: auto;
+    padding: 1rem;
+}
+
+
+.cardbody {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  
+}
+
+/*
+.one {
+    grid-row: 1;
+}
+
+.main {
+    width: calc(70vw - 7px);
+    height:88vh;
     background-color:white;
     border-radius: 10px;
+    grid-column: span 2/auto;
+    grid-auto-rows: auto;
 }
 
 .sidebar_avatar {
     margin-bottom: 10px;
 }
 
-.sidebar_top {
+.sidebar-leftup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,3 +93,30 @@
     border-top-right-radius: 10px;
     padding-bottom: 10px;
 }
+
+.sidebar-leftdown ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.sidebar-leftdown li {
+    text-align: justify;    
+}
+
+*/
+
+@media screen and (max-width: 1200px) {
+
+.sidebar {
+    display:none;
+}
+
+.main {
+    display: grid;
+    place-items: center;
+    margin: auto;
+    width: 90vw;
+}
+
+
+};

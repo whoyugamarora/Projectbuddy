@@ -1,7 +1,11 @@
 import React from 'react';
+import Navbar from '../components/Navbar/index';
+
 
 const Services = () => {
   return (
+    <div>
+      <Navbar />
     <div
       style={{
         display: 'flex',
@@ -11,6 +15,7 @@ const Services = () => {
       }}
     >
       <h1>Services</h1>
+    </div>
     </div>
   );
 };
