@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import { Avatar } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import {CardHeader} from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { borderRadius } from '@mui/system';
@@ -26,7 +27,7 @@ export default function BasicCard() {
     <Card sx={{ minWidth: 500, width: 50, margin: 2, borderRadius: 5 }}>
     <CardHeader
       avatar={
-        <Avatar sx={{bgcolor: red, width: 72, height: 72 }} aria-label="recepie">
+        <Avatar sx={{width: 72, height: 72 }} aria-label="recepie">
         R
         </Avatar>
         }
