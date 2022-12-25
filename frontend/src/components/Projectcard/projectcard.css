@@ -1,17 +1,1 @@
 
-.card {
-    display: grid;
-    place-items: center;
-    align-items: center;
-    height: 10vh;
-    width: 20vw;
-}
-
-.card_body {
-    display: grid;
-    place-items: center;
-    align-items: center;
-    height: 10vh;
-    width: 20vw;
-}
-

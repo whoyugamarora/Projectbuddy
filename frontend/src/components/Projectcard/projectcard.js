@@ -1,5 +1,3 @@
-
-
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import { Avatar } from '@mui/material';
@@ -24,16 +22,16 @@ const bull = (
 
 export default function BasicCard() {
   return (
-    <Card sx={{ minWidth: 500, width: 50, margin: 2, borderRadius: 5 }}>
+    <Card sx={{ minWidth: 200, width: 350, maxWidth: 500, margin: 2, borderRadius: 5, padding: 1 }}>
     <CardHeader
       avatar={
-        <Avatar sx={{width: 72, height: 72 }} aria-label="recepie">
+        <Avatar sx={{width: 70, height: 70 }} aria-label="recepie">
         R
         </Avatar>
         }
-        title="Name"
-        subheader="Position"
-        titleTypographyProps={{variant: "h4" }}
+        title=" Project Name"
+        subheader="Author"
+        titleTypographyProps={{variant: "h5", fontWeight: 600 }}
         />
       
     <CardContent>

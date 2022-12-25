@@ -1,6 +1,7 @@
 body {
     background-color:rgba(0,121,211,0.2);
-    width: 100vw;
+    width: 98vw;
+    overflow-x: hidden;
 }
 
 
@@ -9,13 +10,14 @@ body {
     flex-direction: row;
     justify-content: center;
     width: 98vw;
-    padding: 2vh 0px 0px 0px;
-    height: calc(100vh - 65px);
+    padding: 2vh 0px 0px 2vh;
+    min-height: calc(100vh - 65px);
     gap: 1vw;
     margin-inline: auto;
 }
 
 .sidebar {
+    position: sticky;
     border-radius: 20px;
     height: calc(96vh - 65px) ;
     width: 17vw;
@@ -27,7 +29,7 @@ body {
 .main {
     background-color:white;
     width: 100%;
-    height: calc(96vh - 65px) ;
+    min-height: calc(96vh - 65px) ;
     border-radius: 20px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -52,20 +54,26 @@ body {
     margin-inline: auto;
 }
 
-
-.main-content {
-    width: auto;
-    height: auto;
-    padding: 1rem;
-}
-
-
 .cardbody {
     width: 70%;
     display: flex;
     flex-direction: column;
-  
 }
+
+.main-content {
+    width: 100%;
+    min-height: calc(90vh) ;
+    padding: 2vw;
+}
+
+.projectcards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
 
 /*
 .one {
@@ -111,12 +119,23 @@ body {
     display:none;
 }
 
+.containerx {
+    margin-inline: auto;
+}
+
 .main {
-    display: grid;
-    place-items: center;
-    margin: auto;
+    margin-inline: auto;
     width: 90vw;
 }
 
+.main-content {
+    margin-inline: auto;
+}
+
+.projectcards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
 };

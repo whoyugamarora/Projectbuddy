@@ -21,7 +21,7 @@ const Navbar = ({ user }) => {
   return (
     <>
       <Nav>
-        <Heading><HeadingLink to='/'>
+        <Heading><HeadingLink to='/dashboard'>
           ProjectBuddy
           </HeadingLink>
         </Heading>
