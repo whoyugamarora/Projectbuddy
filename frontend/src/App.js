@@ -9,6 +9,9 @@ import Contact from './pages/contact';
 import Home from './pages/Home/home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import firebase  from '../src/pages/firebase';
+import AccountPage from './pages/Account/account';
+import Listings from './pages/Listings/listings';
+import AddProjectForm from './pages/NewListing/newlisting';
 
 
 
@@ -27,8 +30,10 @@ import firebase  from '../src/pages/firebase';
         <Route path='/' element = { <Home/> } />
         <Route path='/dashboard' element ={user ? <Dashboard user={user} /> : <Login/> } />
         <Route path='/about' element ={user ? <About user={user} /> : <Login/> } />
-        <Route path='/services' element ={<Services />} />
+        <Route path='/listings'  element= {user ? <Listings user={user} /> : <Login/> } />
         <Route path='/contact-us' component={Contact} />
+        <Route path='/myaccount' element= {user ? <AccountPage user={user} /> : <Login/> } />
+        <Route path='/projects' element= {user ? <AddProjectForm user={user} /> : <Login/> } />
       </Routes>
      
     </>

@@ -48,13 +48,13 @@ export const signInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-export const registerWithEmailAndPassword = async (name, email, password) => {
+export const registerWithEmailAndPassword = async (displayName, email, password) => {
   try {
     const res = await auth.createUserWithEmailAndPassword(email, password);
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
-      name,
+      displayName,
       authProvider: "local",
       email,
     });

@@ -6,9 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import {CardHeader} from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { borderRadius } from '@mui/system';
-import { alignPropType } from 'react-bootstrap/esm/types';
-import { BiDockRight } from 'react-icons/bi';
+import './projectcard.css';
 
 
 const bull = (
@@ -22,7 +20,7 @@ const bull = (
 
 export default function BasicCard() {
   return (
-    <Card sx={{ minWidth: 200, width: 350, maxWidth: 500, margin: 2, borderRadius: 5, padding: 1 }}>
+    <Card className='projectcardbox' sx={{ minWidth: 200, width: 350, maxWidth: 500, margin: 2, borderRadius: 5, padding: 1 }}>
     <CardHeader
       avatar={
         <Avatar sx={{width: 70, height: 70 }} aria-label="recepie">

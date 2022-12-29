@@ -29,9 +29,8 @@ const Dashboard = ({ user }) => {
               <br />
               <Card.Subtitle className="mb-2 text-muted displayname">
                 Logged in as {user.displayName}
-
               </Card.Subtitle>
-
+              <br/><br/>
             </Card.Body>
           </div>
         </div>
@@ -39,17 +38,19 @@ const Dashboard = ({ user }) => {
         <div className="main">
           <div className="main-content">
             
-            <h2>Java</h2>
+            <h2>Featured Projects</h2>
+            <br/>
+            <h3>Java</h3>
             <div className='projectcards'>
               {repeatprojectcard(3)}
             </div>
             <br/>
-            <h2>SQL</h2>
+            <h3>SQL</h3>
             <div className='projectcards'>
               {repeatprojectcard(3)}
             </div>
             <br/>
-            <h2>Python</h2>
+            <h3>Python</h3>
             <div className='projectcards'>
               {repeatprojectcard(3)}
             </div>

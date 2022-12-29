@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "description": "https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/components/cards/BasicCard.js",
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -26,6 +27,7 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -50,4 +52,7 @@
       "last 1 safari version"
     ]
   }
+ 
+  
 }
+

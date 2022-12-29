@@ -69,6 +69,7 @@ body {
 .projectcards {
     display: flex;
     flex-direction: row;
+    margin-inline: auto;
     flex-wrap: wrap;
 }
 

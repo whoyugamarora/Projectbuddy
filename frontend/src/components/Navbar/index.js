@@ -43,7 +43,7 @@ const Navbar = ({ user }) => {
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavMenu>
-          <NavLink to='/newlisting' activeStyle>
+          <NavLink to='/projects' activeStyle>
             Add New
           </NavLink>
           <NavBtn>
@@ -55,7 +55,7 @@ const Navbar = ({ user }) => {
                   id="signbtn"
                   onClick={() => auth.signOut()}
                 >
-                  <GoSignOut /> 
+                  <GoSignOut />
                   Sign Out
                 </Button>
           </NavBtn>
