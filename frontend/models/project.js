@@ -1,13 +1,13 @@
-// models/project.js
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const ProjectSchema = new Schema({
+// Create a new Mongoose schema for projects
+const ProjectSchema = new mongoose.Schema({
   title: String,
   description: String,
-  requiredStack: [String]
+  stack: [String]
 });
 
+// Create a Mongoose model based on the schema
 const Project = mongoose.model('Project', ProjectSchema);
 
 module.exports = Project;

@@ -1,23 +1,20 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const mongoose = require('mongoose');
-const projectsroutes = require('./src/routes/projects');
+const bodyParser = require('body-parser');
 
-// Initialize the express app
+const projectsRoutes = require('./routes/projects');
+
 const app = express();
-
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
+app.use(cors({
+  origin: ['http://localhost:3000']
+}));
 
 // Connect to the MongoDB database
 mongoose.connect('mongodb+srv://yugamarora:yugamarora115@projectbuddy.ixngugu.mongodb.net/Projectbuddy', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
 
 const db = mongoose.connection;
 
@@ -29,9 +26,12 @@ db.once('open', function() {
   console.log('Connected to MongoDB!');
 });
 
-// Define a simple route
-app.use('/projects', projectsroutes);
+// Use body-parser to parse incoming request bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Use the projects routes for all requests starting with /projects
+app.use('/projects', projectsRoutes);
 
 // Start the server
 app.listen(5000, () => {

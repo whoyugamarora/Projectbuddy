@@ -12,10 +12,10 @@ function AddProjectForm() {
       event.preventDefault();
   
       // Send the data to the server to be saved
-      axios.post('/projects', {
+      axios.post("http://localhost:5000/projects",  {
         title: title,
         description: description,
-        requiredStack: stack.split(',') // Split the stack string on commas to create an array of strings
+        stack: stack.split(',') // Split the stack string on commas to create an array of strings
       })
         .then(response => {
           // The data has been saved successfully
