@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const ProjectSchema = new mongoose.Schema({
   title: String,
   description: String,
-  stack: [String]
+  stack: [String],
+  userId: String
 });
 
 // Create a Mongoose model based on the schema

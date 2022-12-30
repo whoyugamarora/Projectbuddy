@@ -1,15 +1,20 @@
 const express = require('express');
+const admin = require('firebase-admin')
 const router = express.Router();
 const Project = require('../models/project');
 
+
+
 // Define a route for POST requests to '/projects'
 router.post('/', (req, res) => {
-  // Create a new project document using the request body
-  const project = new Project({
-    title: req.body.title,
-    description: req.body.description,
-    stack: req.body.stack
-  });
+
+    // Create a new project document using the request body
+    const project = new Project({
+      title: req.body.title,
+      description: req.body.description,
+      stack: req.body.stack,
+      userId: req.body.userId
+    });
 
   // Save the document to the 'projects' collection
   project.save((err) => {
@@ -22,6 +27,7 @@ router.post('/', (req, res) => {
     }
   });
 });
+
 
 // Define a route for GET requests to '/projects'
 router.get('/', (req, res) => {
@@ -36,5 +42,6 @@ router.get('/', (req, res) => {
     }
   });
 });
+
 
 module.exports = router;

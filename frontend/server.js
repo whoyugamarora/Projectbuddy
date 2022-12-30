@@ -2,8 +2,20 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const admin = require('firebase-admin');
 const projectsRoutes = require('./routes/projects');
+
+const firebaseConfig = {
+  // Your Config Goes Here
+  apiKey: "AIzaSyAQvTxUZ3Coa5tWom-M0DJZVdcktdX4GEU",
+  authDomain: "projectbuddy-ufv.firebaseapp.com",
+  projectId: "projectbuddy-ufv",
+  storageBucket: "projectbuddy-ufv.appspot.com",
+  messagingSenderId: "1025724302770",
+  appId: "1:1025724302770:web:c887f2845c2974134150ab"
+};
+
+admin.initializeApp(firebaseConfig);
 
 const app = express();
 app.use(cors({

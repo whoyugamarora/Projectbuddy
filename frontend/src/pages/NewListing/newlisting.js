@@ -2,36 +2,47 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import axios from 'axios';
 import './newlisting.css'
+import { useRadioGroup } from '@mui/material';
+import firebase from 'firebase/compat/app';
+
+
+
 
 function AddProjectForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [stack, setStack] = useState('');
-  
+
     const handleSubmit = (event) => {
-      event.preventDefault();
-  
-      // Send the data to the server to be saved
-      axios.post("http://localhost:5000/projects",  {
-        title: title,
-        description: description,
-        stack: stack.split(',') // Split the stack string on commas to create an array of strings
-      })
-        .then(response => {
-          // The data has been saved successfully
-          console.log('Data saved successfully');
+        event.preventDefault();
+
+        const userId = firebase.auth().currentUser.uid;
+        // Send the data to the server to be saved
+        axios.post("http://localhost:5000/projects", {
+            title: title,
+            description: description,
+            stack: stack.split(','),
+            userId: userId // Split the stack string on commas to create an array of strings,
         })
-        .catch(error => {
-          // An error occurred while saving the data
-          console.error(error);
-        });
+            .then(response => {
+                // The data has been saved successfully
+                console.log('Data saved successfully');
+                alert("Data Saved Successfully!")
+            })
+            .catch(error => {
+                // An error occurred while saving the data
+                console.error(error);
+            });
     };
-      
-    return (
+
+    return  (
         <div className='addnew'>
             <Navbar />
+
             <div className='formdiv'>
                 <form onSubmit={handleSubmit}>
+                    <h2>Add New Listing</h2>
+                    <br />
                     <label htmlFor="title">Title:</label>
                     <input
                         type="text"
