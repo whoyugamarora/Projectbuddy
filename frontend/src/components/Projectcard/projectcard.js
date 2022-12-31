@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './projectcard.css';
 
-
 const bull = (
   <Box
     component="span"
@@ -18,28 +17,31 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard() {
+export default function BasicCard(props) {
   return (
     <Card className='projectcardbox' sx={{ minWidth: 200, width: 350, maxWidth: 500, margin: 2, borderRadius: 5, padding: 1 }}>
-    <CardHeader
-      avatar={
-        <Avatar sx={{width: 70, height: 70 }} aria-label="recepie">
-        R
-        </Avatar>
+      <CardHeader
+        avatar={
+          <Avatar sx={{width: 70, height: 70 }} aria-label="recepie">
+            R
+          </Avatar>
         }
-        title=" Project Name"
-        subheader="Author"
+        title={props.title}
+        subheader={props.subheader}
         titleTypographyProps={{variant: "h5", fontWeight: 600 }}
-        />
-      
-    <CardContent>
-      <Typography variant="body2">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small" sx={{borderRadius: 5}}>Connect</Button>
-    </CardActions>
-  </Card>
+      />
+      <CardContent>
+        <Typography variant="body2">
+          {props.description}
+        </Typography>
+        <br/>
+        <Typography variant="body3">
+          <strong>Required Stack: </strong> {props.stack}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small" sx={{borderRadius: 5}}>Connect</Button>
+      </CardActions>
+    </Card>
   );
 }
