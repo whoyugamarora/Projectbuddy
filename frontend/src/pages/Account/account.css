@@ -24,6 +24,7 @@
 }
 
 .accountimg {
+    height: 15vw;
     width: 50%;
     display: grid;
     place-items: center;
@@ -37,8 +38,52 @@
 }
 
 .accountskills {
-    padding: 2vw;
+    padding: 2rem;
     width: 50%;
+    min-height: 15vw;
+    display: grid;
+    align-items: center;
+}
+.skillheading {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-width: 100%;
+  list-style-type: none;
+  align-items: center;
+  justify-content:space-evenly;
+  margin-inline: auto;
+}
+
+.skillform {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 5.5vw;
+}
+
+.skillform label {
+  width:90%;
+  height:100%;
+}
+
+#inputtext {
+  width: 100%; 
+  height: 100%;
+}
+
+#submitbutton {
+  width: 30%;
+  height: 100%;
 }
 
 .topaccount {

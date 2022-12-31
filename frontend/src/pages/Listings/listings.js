@@ -30,6 +30,7 @@ const Listings = ({ user }) => {
                         <BasicCard
                             key={project.id}
                             title={project.title}
+                            subheader={project.author}
                             description={project.description}
                             stack={project.stack}
                         />

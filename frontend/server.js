@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const projectsRoutes = require('./routes/projects');
+const skillRoutes = require('./routes/skills');
 
 const app = express();
 app.use(cors({
@@ -32,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use the projects routes for all requests starting with /projects
 app.use('/projects', projectsRoutes);
+app.use('/myaccount', skillRoutes);
 
 // Start the server
 app.listen(5000, () => {

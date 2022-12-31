@@ -36,7 +36,7 @@ export default function BasicCard(props) {
         </Typography>
         <br/>
         <Typography variant="body3">
-          <strong>Required Stack: </strong> {props.stack}
+          <strong>Required Stack: </strong>{props.stack} 
         </Typography>
       </CardContent>
       <CardActions>
