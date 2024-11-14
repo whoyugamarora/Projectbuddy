@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 import React, { useState } from "react";
-
+import './login.css';
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -17,123 +17,113 @@ const Login = () => {
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+
   return (
-    <div className="container-fluid" style={{ marginTop: "10%" }}>
-      <div className="row">
-        <div className="col col-2"></div>
-        <div className="col col-8">
-          <div className="row">
-            <div className="col col-6">
-              <Card>
-                <Card.Body>
-                  <Card.Title>User Login</Card.Title>
-                  <div>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Email address</Form.Label>
-                      <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        value={loginEmail}
-                        onChange={(e) => setLoginEmail(e.target.value)}
-                      />
-                      <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                      </Form.Text>
-                    </Form.Group>
+    <div className="login">
+      <div className="login__container">
+        <div className="row">
+          <div className="col-12 col-md-6 mb-4">
+            <Card className="login-card shadow-sm">
+              <Card.Body className="cardbodymanual">
+                <Card.Title className="text-center mb-4">User Login</Card.Title>
+                <Form>
+                  <Form.Group className="mb-3 formgroup" controlId="loginEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      className="inputplaceholder"
+                      type="email"
+                      placeholder="Enter your email"
+                      value={loginEmail}
+                      onChange={(e) => setLoginEmail(e.target.value)}
+                    />
+                  </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        value={loginPassword}
-                        onChange={(e) => setLoginPassword(e.target.value)}
-                      />
-                    </Form.Group>
-                    <hr style={{ margin: "5%" }} />
+                  <Form.Group className="mb-3" controlId="loginPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      className="inputplaceholder"
+                      type="password"
+                      placeholder="Enter your password"
+                      value={loginPassword}
+                      onChange={(e) => setLoginPassword(e.target.value)}
+                    />
+                  </Form.Group>
 
-                    <div className="d-grid gap-2">
-                      <Button
-                        variant="outline-success"
-                        type="submit"
-                        onClick={() => {
-                          signInWithEmailAndPassword(loginEmail, loginPassword);
-                        }}
-                      >
-                        Login
-                      </Button>
-                      <Button
-                        variant="outline-primary"
-                        onClick={signInWithGoogle}
-                      >
-                        <i className="fab fa-google"></i>Sign-in with Google
-                      </Button>
-                    </div>
+                  <div className="d-grid gap-2 mt-4">
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        signInWithEmailAndPassword(loginEmail, loginPassword);
+                      }}
+                    >
+                      Login
+                    </Button>
+                    <Button variant="outline-secondary" onClick={signInWithGoogle}>
+                      <i className="fab fa-google"></i> Sign in with Google
+                    </Button>
                   </div>
-                </Card.Body>
-              </Card>
-            </div>
-            <div className="col col-6">
-              <Card>
-                <Card.Body>
-                  <Card.Title>User Registration</Card.Title>
-                  <Card.Text>First time visiting? register Here</Card.Text>
-                  <div>
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                      <Form.Label>Name</Form.Label>
-                      <Form.Control
-                        type="name"
-                        placeholder="Enter name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Email address</Form.Label>
-                      <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </Form.Group>
+                </Form>
+              </Card.Body>
+            </Card>
+          </div>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </Form.Group>
-                    <hr style={{ margin: "5%" }} />
+          <div className="col-12 col-md-6">
+            <Card className="login-card shadow-sm">
+              <Card.Body>
+                <Card.Title className="text-center mb-4">User Registration</Card.Title>
+                <Form>
+                  <Form.Group className="mb-3" controlId="registerName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      className="inputplaceholder"
+                      type="text"
+                      placeholder="Enter your name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </Form.Group>
 
-                    <div className="d-grid gap-2">
-                      <Button
-                        variant="outline-danger"
-                        type="submit"
-                        onClick={() => {
-                          registerWithEmailAndPassword(name, email, password);
-                        }}
-                      >
-                        Register
-                      </Button>
-                    </div>
+                  <Form.Group className="mb-3" controlId="registerEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      className="inputplaceholder"
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="registerPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      className="inputplaceholder"
+                      type="password"
+                      placeholder="Create a password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </Form.Group>
+
+                  <div className="d-grid gap-2 mt-4">
+                    <Button
+                      variant="success"
+                      onClick={() => {
+                        registerWithEmailAndPassword(name, email, password);
+                      }}
+                    >
+                      Register
+                    </Button>
                   </div>
-                </Card.Body>
-              </Card>
-             
-            </div>
+                </Form>
+              </Card.Body>
+            </Card>
           </div>
         </div>
-        <div className="goback">
-          <Button
-            variant="outline-danger"
-           type="click"
-           href='/'
-            >Go Back</Button>
-         </div>
+
+        <div className="text-center mt-4">
+          <Button variant="outline-dark" href="/">Go Back</Button>
+        </div>
       </div>
     </div>
   );

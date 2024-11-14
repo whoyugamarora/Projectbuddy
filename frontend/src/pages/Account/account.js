@@ -3,89 +3,80 @@ import axios from 'axios';
 import Navbar from '../../components/Navbar/index';
 import BasicCard from '../../components/Projectcard/projectcard';
 import Button from 'react-bootstrap/esm/Button';
-import ReactDOM from 'react';
 import firebase from '../firebase';
-import { auth } from "../firebase";
 import './account.css';
 
 const AccountPage = ({ user }) => {
-
     const [mylistings, setMylistings] = useState([]);
-    const uid = firebase.auth().currentUser.uid;
+    const [formIsOpen, setFormIsOpen] = useState(false);
+    const [skill, setSkill] = useState('');
+    const [skills, setSkills] = useState([]);
+    const uid = firebase.auth().currentUser ? firebase.auth().currentUser.uid : null;
+    const avatarUrl = `https://api.dicebear.com/9.x/micah/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4,c0aede,d1d4f9`;
+
 
     useEffect(() => {
         async function fetchmylistings() {
             try {
                 const response = await fetch('http://localhost:5000/projects');
                 const data = await response.json();
-
                 const myProjects = data.filter(project => project.userId === uid);
-
                 setMylistings(myProjects);
             } catch (error) {
                 console.error(error);
             }
         }
-        fetchmylistings();
-    }, []);
-
-    const [formIsOpen, setFormIsOpen] = useState(false);
-    const [skill, setSkill] = useState('');
-    const [skills, setSkills] = useState([]);
+        if (uid) fetchmylistings();
+    }, [uid]);
 
     const openForm = () => {
         setFormIsOpen(!formIsOpen);
-    }
+    };
 
     const handleChange = (event) => {
         setSkill(event.target.value);
-    }
+    };
 
     const addSkill = (skill) => {
-        // Check if the user already has a document in the database
         axios.get(`http://localhost:5000/myaccount/${uid}`)
             .then((response) => {
-                // If the user already has a document, update the existing document with the new skill
                 if (response.data) {
                     axios.put(`http://localhost:5000/myaccount/${uid}`, { skills: [...response.data.skills, skill] })
                         .then((response) => {
-                            console.log(response);
+                            setSkills([...response.data.skills, skill]);
                         })
-                        .catch((error) => {
-                            console.error(error);
-                        });
+                        .catch((error) => console.error(error));
                 } else {
-                    // If the user does not have a document, create a new document with the new skill
                     axios.post('http://localhost:5000/myaccount', { userId: uid, skills: [skill] })
                         .then((response) => {
-                            console.log(response);
+                            setSkills([skill]);
                         })
-                        .catch((error) => {
-                            console.error(error);
-                        });
+                        .catch((error) => console.error(error));
                 }
             })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
+            .catch((error) => console.error(error));
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         addSkill(skill);
-    }
+        setSkill('');  // Clear input field after submit
+    };
 
     useEffect(() => {
         async function fetchSkills() {
             try {
                 const response = await axios.get(`http://localhost:5000/myaccount/${uid}`);
-                setSkills(response.data.skills);
+                if (response.data && response.data.skills) {
+                    setSkills(response.data.skills);
+                }
             } catch (error) {
                 console.error(error);
             }
         }
-        fetchSkills();
-    }, [skills]);
+        if (uid) fetchSkills();
+    }, [uid]);
+
 
     return (
         <>
@@ -97,7 +88,11 @@ const AccountPage = ({ user }) => {
                 <div className='account'>
                     <div className='topaccount'>
                         <div className='accountimg'>
-                            <img src={user.photoURL} alt={user.name} />
+                        <img
+                            className='userpic'
+                            src={avatarUrl}
+                            alt='User Avatar'
+                        />
                         </div>
                         <div className='accountskills'>
                             <div className='skillheading'>
@@ -113,21 +108,31 @@ const AccountPage = ({ user }) => {
                                 </form>
                             )}
                             <ul className='skills-list'>
-                            {skills.map((skill, index) => <li key={index}>{skill}</li>)}                            </ul>
+                                {skills && skills.length > 0 ? (
+                                    skills.map((skill, index) => <li key={index}>{skill}</li>)
+                                ) : (
+                                    <li>No skills found</li>
+                                )}
+                            </ul>
                         </div>
                     </div>
                     <div className='postings'>
-                        <h3>My Postings:</h3>
+                        <h3>My Posts:</h3>
                         <ul className='postingcards'>
-                            {mylistings.map((project) => (
+                        {mylistings && mylistings.length > 0 ? (
+                            mylistings.map((project) => (
                                 <BasicCard
-                                    key={project.id}
-                                    title={project.title}
-                                    subheader={project.author}
-                                    description={project.description}
-                                    stack={project.stack}
+                                key={project.id}
+                                title={project.title}
+                                subheader={project.author}
+                                description={project.description}
+                                stack={project.stack}
+                                email={project.email}
                                 />
-                            ))}
+                            ))
+                            ) : (
+                            <li>No projects found</li>
+                            )}
                         </ul>
                     </div>
                 </div>

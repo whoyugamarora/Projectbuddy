@@ -1,142 +1,159 @@
+/* General Container Styles */
 body {
-    background-color:rgba(0,121,211,0.2);
-    width: 98vw;
+    background: linear-gradient(135deg, #dbe7f1, #ffffff 80%);
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
     overflow-x: hidden;
 }
-
 
 .containerx {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 98vw;
-    padding: 2vh 0px 0px 2vh;
+    width: 95vw;
     min-height: calc(100vh - 65px);
-    gap: 1vw;
+    gap: 2vw;
+    padding-top: 3vh;
     margin-inline: auto;
+    animation: fadeIn 0.8s ease-in;
 }
 
+/* Sidebar Styling */
 .sidebar {
     position: sticky;
-    border-radius: 20px;
-    height: calc(96vh - 65px) ;
-    width: 17vw;
-    background-color:white;
-    overflow-wrap:break-word;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-
-.main {
-    background-color:white;
-    width: 100%;
-    min-height: calc(96vh - 65px) ;
-    border-radius: 20px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 15px;
+    width: 18vw;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
 }
 
 .sidebar-avatar {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    width: inherit;
-    height: inherit;
     text-align: center;
-    padding-top: 2rem ;
+    width: 100%;
+    height: 100%;
+    padding-top: 2rem;
 }
 
 .userpic {
     width: 65%;
-    height: 19%;
-    border-radius: 100%;
-    justify-content: center;
-    align-items: center;
-    margin-inline: auto;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.userpic:hover {
+    transform: scale(1.05);
 }
 
 .cardbody {
-    width: 70%;
+    width: 85%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+/* Main Content Styling */
+.main {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: slideIn 0.5s ease-in;
 }
 
 .main-content {
     width: 100%;
-    min-height: calc(90vh) ;
-    padding: 2vw;
+    min-height: 90vh;
+}
+
+h2 {
+    color: #0056b3;
+    text-align: center;
+}
+
+/* Align Project Header to Left and Stack Button */
+.project-section {
+    padding: 1rem 0;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.project-header h3 {
+    color: #0056b3;
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: left;
 }
 
 .projectcards {
     display: flex;
     flex-direction: row;
-    margin-inline: auto;
     flex-wrap: wrap;
+    justify-content:flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
 }
 
-
-
-
-/*
-.one {
-    grid-row: 1;
+.projectcards:hover > div {
+    transform: scale(1.02);
+    transition: transform 0.3s;
 }
 
-.main {
-    width: calc(70vw - 7px);
-    height:88vh;
-    background-color:white;
-    border-radius: 10px;
-    grid-column: span 2/auto;
-    grid-auto-rows: auto;
+/* Listings Button Styling */
+.listings-button {
+    background-color: #0079D3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.sidebar_avatar {
-    margin-bottom: 10px;
+.listings-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-.sidebar-leftup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding-bottom: 10px;
-}
-
-.sidebar-leftdown ul {
-    list-style-type: none;
-    text-align: center;
-}
-
-.sidebar-leftdown li {
-    text-align: justify;    
-}
-
-*/
-
+/* Responsive Design */
 @media screen and (max-width: 1200px) {
-
-.sidebar {
-    display:none;
+    .sidebar {
+        display: none;
+    }
+    
+    .containerx {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main {
+        width: 90vw;
+    }
 }
 
-.containerx {
-    margin-inline: auto;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.main {
-    margin-inline: auto;
-    width: 90vw;
+@keyframes slideIn {
+    from { transform: translateX(-50px); }
+    to { transform: translateX(0); }
 }
-
-.main-content {
-    margin-inline: auto;
-}
-
-.projectcards {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-};

@@ -21,7 +21,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <section class="features-icons bg-light text-center det-ails">
+            <section class="features-icons bg-light text-center det-ails about">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">

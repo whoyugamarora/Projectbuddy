@@ -18,6 +18,7 @@ const Listings = ({ user }) => {
         fetchProjects();
     }, []);
 
+
     return (
         <>
             <Navbar />
@@ -28,12 +29,16 @@ const Listings = ({ user }) => {
                 <div className='listings'>
                     {projects.map((project) => (
                         <BasicCard
-                            key={project.id}
-                            title={project.title}
-                            subheader={project.author}
-                            description={project.description}
-                            stack={project.stack}
-                        />
+                        key={project.id} 
+                        userId={project.userId} // Pass uploader’s userId here
+                        project={project}
+                        title={project.title}
+                        subheader={project.author}
+                        description={project.description}
+                        stack={project.stack}
+                        email={project.email}
+                      />
+                      
                     ))}
                 </div>
             </div>

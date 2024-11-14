@@ -14,7 +14,8 @@ router.post('/', (req, res) => {
       description: req.body.description,
       stack: req.body.stack,
       userId: req.body.userId,
-      author: req.body.author
+      author: req.body.author,
+      email: req.body.email
     });
 
   // Save the document to the 'projects' collection

@@ -1,48 +1,198 @@
+/* Main container styling */
 .login {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #dcdcdc;
-    padding: 30px;
-  }
-  
-  .login__textBox {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .login__btn {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    border: none;
-    color: white;
-    background-color: black;
-  }
-  
-  .login__google {
-    background-color: #4285f4;
-  }
-  
-  .login div {
-    margin-top: 7px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffffff, #e0eafc);
+  padding: 20px;
+  width: 100vw;
+}
 
-  .goback {
-    display: grid;
-    height: 20vh;
-    width: 100vw;
-    justify-content: flex-end;
-    align-items: flex-end;
-    margin-left: 30px;
+.login__container {
+  width: 90%;
+  max-width: 90vw;
+}
+
+/* Card styling */
+.login-card {
+  border: none;
+  border-radius: 15px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.login-card .card-title {
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+}
+
+/* Form control styling */
+.login-card .form-control {
+  border-radius: 10px;
+  padding: 16px 24px;
+  font-size: 18px;
+  color: #333;
+  width: 100%; /* Ensure input fields take full width */
+  max-width: 100%; /* Prevents overflow */
+  box-sizing: border-box; /* Ensures padding doesn’t affect width */
+  min-height: 50px;
+}
+
+.login-card .form-control::placeholder {
+  color: #aaa;
+  font-size: 16px;
+}
+
+/* Button styling */
+.login-card .d-grid .btn {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.login-card .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.login-card .btn-outline-secondary {
+  color: #333;
+  border-color: #333;
+}
+
+.login-card .btn-outline-secondary:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Button for the go-back link */
+.text-center .btn-outline-dark {
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Extra large screens (1200px and above) */
+@media (min-width: 1200px) {
+  .login__container {
+    max-width: 90vw;
   }
+
+  .login-card .form-control {
+    font-size: 20px;
+    padding: 18px 26px;
+  }
+
+  .login-card .d-grid .btn {
+    font-size: 18px;
+  }
+}
+
+/* Large screens (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .login__container {
+    max-width: 90vw;
+  }
+
+  .login-card .form-control {
+    font-size: 18px;
+    padding: 16px 24px;
+  }
+
+  .login-card .d-grid .btn {
+    font-size: 17px;
+  }
+}
+
+/* Medium screens (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .login__container {
+    max-width: 90vw;
+  }
+
+  .login-card {
+    padding: 18px;
+  }
+
+  .login-card .form-control {
+    font-size: 17px;
+    padding: 14px 20px;
+  }
+
+  .login-card .d-grid .btn {
+    font-size: 16px;
+  }
+}
+
+/* Small screens (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .login__container {
+    max-width: 600px;
+  }
+
+  .login-card {
+    padding: 15px;
+  }
+
+  .login-card .form-control {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+
+  .login-card .d-grid .btn {
+    font-size: 15px;
+  }
+}
+
+/* Extra small screens (up to 575px) */
+@media (max-width: 575px) {
+
+  .login {
+    height: auto;
+  }
+
+  .login__container {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .cardbodymanual {
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-card {
+    padding: 12px;
+  }
+
+  .login-card .card-title {
+    font-size: 1.2rem;
+  }
+
+  .login-card .form-control {
+    font-size: 15px;
+    min-height: 45px;
+    width: 100% !important; /* Ensures full width on small screens */
+    max-width: 100% !important;
+  }
+
+
+  .login-card .d-grid .btn {
+    font-size: 14px;
+    padding: 10px;
+    width: 100% !important; /* Ensures full width on small screens */
+  }
+
+  .text-center .btn-outline-dark {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+}

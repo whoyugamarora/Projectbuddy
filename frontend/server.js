@@ -12,7 +12,7 @@ app.use(cors({
 }));
 
 // Connect to the MongoDB database
-mongoose.connect('mongodb+srv://yugamarora:yugamarora115@projectbuddy.ixngugu.mongodb.net/Projectbuddy', {
+mongoose.connect('mongodb+srv://yugamarora:tanujarora@projectbuddy.su0yg.mongodb.net/?retryWrites=true&w=majority&appName=Projectbuddy', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

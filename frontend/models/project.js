@@ -6,7 +6,8 @@ const ProjectSchema = new mongoose.Schema({
   description: String,
   stack: [String],
   userId: String,
-  author: String
+  author: String,
+  email: String
 });
 
 // Create a Mongoose model based on the schema

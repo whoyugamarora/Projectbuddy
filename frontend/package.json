@@ -4,7 +4,10 @@
   "private": true,
   "description": "https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/components/cards/BasicCard.js",
   "options": {
-    "allowedHosts": ["localhost", ".localhost"],
+    "allowedHosts": [
+      "localhost",
+      ".localhost"
+    ],
     "proxy": "https://localhost:3386/"
   },
   "dependencies": {
@@ -22,6 +25,7 @@
     "cors": "^2.8.5",
     "firebase": "^9.14.0",
     "firebase-admin": "^11.4.1",
+    "mongodb": "^6.10.0",
     "mongoose": "^6.8.1",
     "react": "^18.2.0",
     "react-avatar": "^5.0.3",
