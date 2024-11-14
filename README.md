@@ -1,1 +1,1 @@
-Readme file for ProjectBuddy. Work Restared by @whoyugamarora - Leisure project
+Readme file for ProjectBuddy. Working alone @whoyugamarora - Leisure project
