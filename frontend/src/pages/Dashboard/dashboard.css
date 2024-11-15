@@ -16,7 +16,7 @@ body {
     gap: 2vw;
     padding-top: 3vh;
     margin-inline: auto;
-    animation: fadeIn 0.8s ease-in;
+    animation: fadeIn 0.3s ease-in;
 }
 
 /* Sidebar Styling */

@@ -6,6 +6,7 @@
     flex-direction: column;
     gap: 20px;
     font-family: Arial, sans-serif;
+    animation: fadeIn 0.3s ease-in;
 }
 
 .user-info {
