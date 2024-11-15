@@ -81,11 +81,9 @@ const AccountPage = ({ user }) => {
     return (
         <>
             <Navbar />
-            <br />
             <div className="account-page">
-                <h2>{user.displayName}'s Profile</h2>
-                <br />
                 <div className='account'>
+                <h2>{user.displayName}'s Profile</h2>
                     <div className='topaccount'>
                         <div className='accountimg'>
                         <img
