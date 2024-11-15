@@ -2,11 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(96vh - 65px);
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+    animation: fadeIn 0.5s ease-in;
   }
   
   .listingswrapped h2 {
-    text-align: left;
+    text-align: center;
   }
   
 .listings {
@@ -15,12 +17,26 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-height: calc(80vh - 65px);
-    width: 90vw;
-    margin: auto;
+    height: auto;
+    width: 98vw;
+    margin-inline: auto;
     padding: 2rem;
-    background-color:white;
-    border-radius: 20px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
 }
 
+.listings img {
+  width: 100%;
+}
+
+
+@media screen and (max-width: 768px) {  
+
+  .listings {
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    margin: 0;
+  }
+
+
+}

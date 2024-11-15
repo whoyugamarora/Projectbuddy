@@ -109,6 +109,10 @@ h2 {
     padding: 1rem 0;
 }
 
+.projectcards img {
+    width: 100%;
+}
+
 .projectcards:hover > div {
     transform: scale(1.02);
     transition: transform 0.3s;
