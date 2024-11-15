@@ -7,24 +7,29 @@ import './userprofilepage.css';
 
 const UserProfilePage = () => {
     const { userId } = useParams(); // Extract userId from the URL
-    const [user, setUser] = useState(null);
-    const [projects, setProjects] = useState([]);
+    const [user, setUser] = useState(null); // User profile data
+    const [projects, setProjects] = useState([]); // User's projects
+    const [error, setError] = useState(null); // Error state
 
     useEffect(() => {
-        console.log('Fetching profile for userId:', userId); // Debugging
         const fetchUserProfile = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/projects/profile/${userId}`);
                 setUser(response.data.user);
                 setProjects(response.data.projects);
-            } catch (error) {
-                console.error('Error fetching user profile:', error);
+            } catch (err) {
+                console.error('Error fetching user profile:', err);
+                setError(err.response?.data?.message || 'Error fetching user profile');
             }
         };
-    
+
         fetchUserProfile();
     }, [userId]);
-    
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     if (!user) {
         return <p>Loading...</p>;
     }
@@ -42,7 +47,7 @@ const UserProfilePage = () => {
                     <div className="project-list">
                         {projects.map((project) => (
                             <BasicCard
-                                key={project.id || project._id}
+                                key={project._id}
                                 userId={project.userId}
                                 project={project}
                                 title={project.title}

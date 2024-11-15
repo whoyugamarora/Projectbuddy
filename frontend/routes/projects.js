@@ -81,4 +81,25 @@ router.get('/profile/:userId', async (req, res) => {
     }
 });
 
+// Search projects
+router.get('/search', async (req, res) => {
+    try {
+        const { query } = req.query;
+
+        // Create a case-insensitive search filter
+        const searchFilter = {
+            $or: [
+                { title: { $regex: query, $options: 'i' } },
+                { author: { $regex: query, $options: 'i' } },
+                { stack: { $regex: query, $options: 'i' } }
+            ]
+        };
+
+        const projects = await Project.find(searchFilter);
+        res.status(200).json(projects);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch projects.' });
+    }
+});
+
 module.exports = router;

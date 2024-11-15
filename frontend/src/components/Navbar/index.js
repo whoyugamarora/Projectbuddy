@@ -24,7 +24,7 @@ const Navbar = ({ user }) => {
         <Bars />
         <NavMenu>
           <NavLink to='/about' activeStyle>About</NavLink>
-          <NavLink to='/services' activeStyle>Services</NavLink>
+          <NavLink to='/search' activeStyle>Search</NavLink>
           <NavLink to='/contact-us' activeStyle>Contact Us</NavLink>
           <NavLink to='/listings' activeStyle>Listings</NavLink>
         </NavMenu>

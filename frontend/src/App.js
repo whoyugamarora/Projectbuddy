@@ -13,6 +13,7 @@ import AccountPage from './pages/Account/account';
 import Listings from './pages/Listings/listings';
 import AddProjectForm from './pages/NewListing/newlisting';
 import UserProfilePage from './pages/publicprofile/userprofilepage';
+import ProjectSearchPage from './pages/projectsearch/projectsearch';
 
 
 
@@ -36,6 +37,7 @@ import UserProfilePage from './pages/publicprofile/userprofilepage';
         <Route path='/myaccount' element= {user ? <AccountPage user={user} /> : <Login/> } />
         <Route path='/projects' element= {user ? <AddProjectForm user={user} /> : <Login/> } />
         <Route path='/profile/:userId' element={user ? <UserProfilePage user={user} /> : <Login/> } />
+        <Route path='/search' element={user ? <ProjectSearchPage user={user} /> : <Login/> } />
       </Routes>
      
     </>
