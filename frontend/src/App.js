@@ -12,6 +12,7 @@ import firebase  from '../src/pages/firebase';
 import AccountPage from './pages/Account/account';
 import Listings from './pages/Listings/listings';
 import AddProjectForm from './pages/NewListing/newlisting';
+import UserProfilePage from './pages/publicprofile/userprofilepage';
 
 
 
@@ -34,6 +35,7 @@ import AddProjectForm from './pages/NewListing/newlisting';
         <Route path='/contact-us' component={Contact} />
         <Route path='/myaccount' element= {user ? <AccountPage user={user} /> : <Login/> } />
         <Route path='/projects' element= {user ? <AddProjectForm user={user} /> : <Login/> } />
+        <Route path='/profile/:userId' element={user ? <UserProfilePage user={user} /> : <Login/> } />
       </Routes>
      
     </>

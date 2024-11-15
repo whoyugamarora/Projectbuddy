@@ -5,17 +5,19 @@ import Button from "react-bootstrap/Button";
 import ProjectCard from '../../components/Projectcard/projectcard';
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
 import axios from 'axios';
 import BasicCard from '../../components/Projectcard/projectcard';
 
 function repeatprojectcard(projectData, skill, user) {
   const filteredProjects = Array.isArray(projectData) 
-    ? projectData.filter(project => project.stack.includes(skill))
+    ? projectData.filter(project => project.stack.includes(skill)).slice(0,3)
     : [];
   
   return filteredProjects.map(project => (
     <BasicCard 
       key={project.id} 
+      userId={project.userId} // Pass uploader’s userId here
       project={project}
       title={project.title}
       subheader={project.author}

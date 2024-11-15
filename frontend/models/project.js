@@ -1,16 +1,22 @@
 const mongoose = require('mongoose');
 
-// Create a new Mongoose schema for projects
-const ProjectSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  stack: [String],
-  userId: String,
-  author: String,
-  email: String
+const projectSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    stack: { type: [String], required: true },
+    userId: { type: String, required: true },
+    author: { type: String, required: true },
+    email: { type: String, required: true },
 });
 
-// Create a Mongoose model based on the schema
-const Project = mongoose.model('Project', ProjectSchema);
+// Add `id` field in JSON responses
+projectSchema.set('toJSON', {
+    virtuals: true,
+    versionKey: false,
+    transform: (doc, ret) => {
+        ret.id = ret._id;
+        delete ret._id;
+    },
+});
 
-module.exports = Project;
+module.exports = mongoose.model('Project', projectSchema);

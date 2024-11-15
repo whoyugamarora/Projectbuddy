@@ -18,7 +18,6 @@ const Listings = ({ user }) => {
         fetchProjects();
     }, []);
 
-
     return (
         <>
             <Navbar />
