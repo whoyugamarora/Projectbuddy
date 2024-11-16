@@ -26,7 +26,7 @@ const Login = () => {
             <Card className="login-card shadow-sm">
               <Card.Body className="cardbodymanual">
                 <Card.Title className="text-center mb-4">User Login</Card.Title>
-                <Form>
+                <Form className="form">
                   <Form.Group className="mb-3 formgroup" controlId="loginEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
@@ -71,7 +71,7 @@ const Login = () => {
             <Card className="login-card shadow-sm">
               <Card.Body>
                 <Card.Title className="text-center mb-4">User Registration</Card.Title>
-                <Form>
+                <Form className="form">
                   <Form.Group className="mb-3" controlId="registerName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control

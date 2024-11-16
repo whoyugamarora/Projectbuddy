@@ -24,8 +24,6 @@
 }
 
 .accountimg {
-    height: 15vw;
-    width: 50%;
     display: grid;
     place-items: center;
     text-align: center;
@@ -38,8 +36,7 @@
 }
 
 .accountimg img {
-  width: 9vw;
-  height: 9vw;
+  scale: 0.7;
   border-radius: 100%;
 }
 
@@ -95,6 +92,8 @@
 .topaccount {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .postings {
@@ -110,4 +109,17 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  
+  .accountimg {
+    display: none;
+  }
+
+  .accountskills {
+    margin: 30px auto;
+    width: 100%;
+  }
+
 }
