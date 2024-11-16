@@ -18,7 +18,7 @@ export default function BasicCard(props) {
         <Card className="projectcardbox" sx={{ minWidth: 200, width: 350, maxWidth: 500, margin: 2, borderRadius: 5, padding: 1 }}>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ width: 100, height: 100 }}>
+                    <Avatar sx={{ width: 80, height: 80 }}>
                         <img className="userpic" src={avatarUrl} alt="User Avatar" />
                     </Avatar>
                 }
@@ -35,11 +35,12 @@ export default function BasicCard(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link to={`/profile/${props.userId}`} style={{ textDecoration: 'none' }}>
-                    <Button size="small" sx={{ borderRadius: 5 }}>
-                        Connect
-                    </Button>
-                </Link>
+            <Link to={`/profile/${props.userId}`} style={{ textDecoration: 'none', textTransform: 'capitalize' }}>
+                <Button size="regular" sx={{ borderRadius: 5, textTransform: 'capitalize' }}>
+                    Connect
+                </Button>
+            </Link>
+
                 {props.currentUserEmail === props.email && (
                     <IconButton
                         aria-label="delete"

@@ -4,6 +4,9 @@ import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import BasicCard from '../../components/Projectcard/projectcard';
 import './userprofilepage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button } from '@mui/material';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const UserProfilePage = () => {
     const { userId } = useParams(); // Extract userId from the URL
@@ -38,9 +41,25 @@ const UserProfilePage = () => {
         <div>
             <Navbar />
             <div className="user-profile">
+                <div className='headingwrap'>
                 <div className="user-info">
                     <h2>{user.displayName || 'User Profile'}</h2>
                     <p>Email: {user.email}</p>
+                </div>
+                <Button as="a" href={`mailto:${user.email}`} className='emailbutton'style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            height: 'fit-content',
+                            backgroundColor: '#256CE1',
+                            color: '#fff',
+                            padding: '10px 15px',
+                            borderRadius: '4px',
+                            textDecoration: 'none',
+                            fontSize: '0.75rem',
+                }}>
+                    <FontAwesomeIcon icon={faEnvelope} />Email
+                </Button>
                 </div>
                 <div className="user-projects">
                     <h3>Projects:</h3>

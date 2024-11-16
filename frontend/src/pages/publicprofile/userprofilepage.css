@@ -1,6 +1,8 @@
 .user-profile {
     padding: 20px;
     max-width: 1200px;
+    min-height: calc(100vh - 65px);
+    height: auto;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -9,13 +11,20 @@
     animation: fadeIn 0.3s ease-in;
 }
 
-.user-info {
-    background-color: #f9f9f9;
+.headingwrap {
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
+
+.user-info {
+    flex:2;
+}
+
 
 .user-info h2 {
     margin-bottom: 10px;
@@ -48,4 +57,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+}
+
+.emailbutton {
+    align-self: center;
+}
+
+.emailbutton:hover {
+    background-color: #f0f0f0 !important;
+    color: #010606 !important;
 }
