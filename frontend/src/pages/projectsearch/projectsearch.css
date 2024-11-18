@@ -13,6 +13,7 @@
     color: #e0e0e0; /* Soft white text */
     width: 80vw;
     margin-inline: auto;
+    animation: fadeIn 0.3s ease-in;
 }
 
 .project-search-header {
