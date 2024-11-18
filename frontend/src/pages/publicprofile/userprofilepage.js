@@ -13,6 +13,8 @@ const UserProfilePage = () => {
     const [user, setUser] = useState(null); // User profile data
     const [projects, setProjects] = useState([]); // User's projects
     const [error, setError] = useState(null); // Error state
+    const avatarUrl = `https://api.dicebear.com/9.x/micah/svg?seed=${encodeURIComponent(user?.email)}&backgroundColor=b6e3f4,c0aede,d1d4f9`;
+
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -42,24 +44,31 @@ const UserProfilePage = () => {
             <Navbar />
             <div className="user-profile">
                 <div className='headingwrap'>
-                <div className="user-info">
-                    <h2>{user.displayName || 'User Profile'}</h2>
-                    <p>Email: {user.email}</p>
-                </div>
-                <Button as="a" href={`mailto:${user.email}`} className='emailbutton'style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            height: 'fit-content',
-                            backgroundColor: '#256CE1',
-                            color: '#fff',
-                            padding: '10px 15px',
-                            borderRadius: '4px',
-                            textDecoration: 'none',
-                            fontSize: '0.75rem',
-                }}>
-                    <FontAwesomeIcon icon={faEnvelope} />Email
-                </Button>
+                    <div className='userimgdiv'>
+                        <img
+                            className='userpic1'
+                            src={avatarUrl}
+                            alt='User Avatar'
+                        />
+                    </div>
+                    <div className="user-info">
+                        <h2>{user.displayName || 'User Profile'}</h2>
+                        <p>Email: {user.email}</p>
+                    </div>
+                    <Button as="a" href={`mailto:${user.email}`} className='emailbutton' style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        height: 'fit-content',
+                        backgroundColor: '#256CE1',
+                        color: '#fff',
+                        padding: '10px 15px',
+                        borderRadius: '4px',
+                        textDecoration: 'none',
+                        fontSize: '0.75rem',
+                    }}>
+                        <FontAwesomeIcon icon={faEnvelope} />Email
+                    </Button>
                 </div>
                 <div className="user-projects">
                     <h3>Projects:</h3>

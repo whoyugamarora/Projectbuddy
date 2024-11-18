@@ -19,12 +19,20 @@
     text-align: center;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+}
+
+.userpic1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 .user-info {
-    flex:2;
+    width: 50%;
 }
-
 
 .user-info h2 {
     margin-bottom: 10px;
