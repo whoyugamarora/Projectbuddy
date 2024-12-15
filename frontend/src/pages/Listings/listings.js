@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar/index';
 import BasicCard from '../../components/Projectcard/projectcard';
-import './listings.css';
 
 const Listings = () => {
     const [projects, setProjects] = useState([]);

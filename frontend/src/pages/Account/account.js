@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../../components/Navbar/index';
 import BasicCard from '../../components/Projectcard/projectcard';
-import './account.css';
 
 const AccountPage = ({ user }) => {
     const [mylistings, setMylistings] = useState([]);
