@@ -18,7 +18,7 @@ function ProjectSearchPage() {
             const data = await response.json();
             setProjects(data);
         } catch (err) {
-            console.log(err.message);
+            console.error(err.message);
             setError(err.message);
         } finally {
             setLoading(false);
@@ -32,27 +32,27 @@ function ProjectSearchPage() {
     };
 
     return (
-    <div className='wrapper'>
-        <Navbar />
-        <div className="project-search-container">
-            <h1 className="project-search-header">Search Projects</h1>
-            <div className="search-bar-container">
-                <input
-                    className="search-bar-input"
-                    type="text"
-                    placeholder="Search by title, author, or stack"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-                <button className="search-bar-button" onClick={handleSearch}>
-                    Search
-                </button>
-            </div>
-            {loading && <p className="loading-message">Loading...</p>}
-            {error && <p className="error-message">{error}</p>}
-            <div className="project-list">
-                {projects.length > 0 ? (
-                    projects.map((project) => (
+        <div className="wrapper">
+            <Navbar />
+            <div className="project-search-container">
+                <h1 className="project-search-header">Discover Projects</h1>
+                <div className="search-bar-container">
+                    <input
+                        className="search-bar-input"
+                        type="text"
+                        placeholder="Search by title, author, or stack"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                    />
+                    <button className="search-bar-button" onClick={handleSearch}>
+                        <i className="fas fa-search"></i> Search
+                    </button>
+                </div>
+                {loading && <p className="loading-message">Loading projects...</p>}
+                {error && <p className="error-message">{error}</p>}
+                <div className="project-list">
+                    {projects.length > 0 ? (
+                        projects.map((project) => (
                             <BasicCard
                                 key={project.id || project._id}
                                 userId={project.userId}
@@ -63,15 +63,14 @@ function ProjectSearchPage() {
                                 stack={project.stack}
                                 email={project.email}
                             />
-                    ))
-                ) : (
-                    <p className="no-projects-message">No projects found.</p>
-                )}
+                        ))
+                    ) : (
+                        !loading && <p className="no-projects-message">No projects found. Try refining your search!</p>
+                    )}
+                </div>
             </div>
         </div>
-        </div>
     );
-    
 }
 
 export default ProjectSearchPage;

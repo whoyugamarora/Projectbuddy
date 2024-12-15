@@ -60,7 +60,7 @@ const UserProfilePage = () => {
                         alignItems: 'center',
                         gap: '8px',
                         height: 'fit-content',
-                        backgroundColor: '#256CE1',
+                        backgroundColor: '#4f46e5',
                         color: '#fff',
                         padding: '10px 15px',
                         borderRadius: '4px',

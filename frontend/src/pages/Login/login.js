@@ -1,129 +1,140 @@
+import React, { useState } from "react";
 import {
   signInWithGoogle,
   signInWithEmailAndPassword,
-  registerWithEmailAndPassword
+  registerWithEmailAndPassword,
 } from "../firebase";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-
-import React, { useState } from "react";
-import './login.css';
+import { useNavigate } from "react-router-dom"; // For navigation
 
 const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
+  const navigate = useNavigate();
+
   return (
-    <div className="login">
-      <div className="login__container">
-        <div className="row">
-          <div className="col-12 col-md-6 mb-4">
-            <Card className="login-card shadow-sm">
-              <Card.Body className="cardbodymanual">
-                <Card.Title className="text-center mb-4">User Login</Card.Title>
-                <Form className="form">
-                  <Form.Group className="mb-3 formgroup" controlId="loginEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      className="inputplaceholder"
-                      type="email"
-                      placeholder="Enter your email"
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="loginPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      className="inputplaceholder"
-                      type="password"
-                      placeholder="Enter your password"
-                      value={loginPassword}
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                    />
-                  </Form.Group>
-
-                  <div className="d-grid gap-2 mt-4">
-                    <Button
-                      variant="primary"
-                      onClick={() => {
-                        signInWithEmailAndPassword(loginEmail, loginPassword);
-                      }}
-                    >
-                      Login
-                    </Button>
-                    <Button variant="outline-secondary" onClick={signInWithGoogle}>
-                      <i className="fab fa-google"></i> Sign in with Google
-                    </Button>
-                  </div>
-                </Form>
-              </Card.Body>
-            </Card>
-          </div>
-
-          <div className="col-12 col-md-6">
-            <Card className="login-card shadow-sm">
-              <Card.Body>
-                <Card.Title className="text-center mb-4">User Registration</Card.Title>
-                <Form className="form">
-                  <Form.Group className="mb-3" controlId="registerName">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                      className="inputplaceholder"
-                      type="text"
-                      placeholder="Enter your name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="registerEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      className="inputplaceholder"
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="registerPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      className="inputplaceholder"
-                      type="password"
-                      placeholder="Create a password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </Form.Group>
-
-                  <div className="d-grid gap-2 mt-4">
-                    <Button
-                      variant="success"
-                      onClick={() => {
-                        registerWithEmailAndPassword(name, email, password);
-                      }}
-                    >
-                      Register
-                    </Button>
-                  </div>
-                </Form>
-              </Card.Body>
-            </Card>
-          </div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="w-full max-w-5xl bg-white rounded-xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Login Section */}
+        <div>
+          <h2 className="text-3xl font-bold text-center text-gray-700 mb-2">
+            Welcome Back
+          </h2>
+          <p className="text-center text-gray-500 mb-6">Sign in to continue</p>
+          <form className="space-y-4 w-full">
+            <div>
+              <label htmlFor="loginEmail" className="block text-gray-600 font-medium">
+                Email
+              </label>
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                className="w-full px-4 py-2 mt-1 bg-gray-100 border rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label htmlFor="loginPassword" className="block text-gray-600 font-medium">
+                Password
+              </label>
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                className="w-full px-4 py-2 mt-1 bg-gray-100 border rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none"
+              />
+            </div>
+            <div className="mt-4 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => signInWithEmailAndPassword(loginEmail, loginPassword)}
+                className="w-full bg-indigo-600 text-white font-medium py-2 rounded-lg hover:bg-indigo-700 transition duration-300"
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                onClick={signInWithGoogle}
+                className="w-full bg-gray-100 text-gray-700 font-medium py-2 rounded-lg hover:bg-gray-200 transition duration-300"
+              >
+                <i className="fab fa-google mr-2"></i> Sign in with Google
+              </button>
+            </div>
+          </form>
         </div>
 
-        <div className="text-center mt-4">
-          <Button variant="outline-dark" href="/">Go Back</Button>
+        {/* Registration Section */}
+        <div>
+          <h2 className="text-3xl font-bold text-center text-gray-700 mb-2">
+            Create Account
+          </h2>
+          <p className="text-center text-gray-500 mb-6">Join ProjectBuddy</p>
+          <form className="space-y-4 w-full">
+            <div>
+              <label htmlFor="registerName" className="block text-gray-600 font-medium">
+                Name
+              </label>
+              <input
+                type="text"
+                id="registerName"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-2 mt-1 bg-gray-100 border rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label htmlFor="registerEmail" className="block text-gray-600 font-medium">
+                Email
+              </label>
+              <input
+                type="email"
+                id="registerEmail"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-2 mt-1 bg-gray-100 border rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label htmlFor="registerPassword" className="block text-gray-600 font-medium">
+                Password
+              </label>
+              <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create a password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-2 mt-1 bg-gray-100 border rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={() => registerWithEmailAndPassword(name, email, password)}
+              className="w-full bg-green-600 text-white font-medium py-2 rounded-lg hover:bg-green-700 transition duration-300"
+            >
+              Register
+            </button>
+          </form>
         </div>
+      </div>
+
+      {/* Back to Home Button */}
+      <div className="absolute bottom-8">
+        <button
+          onClick={() => navigate("/")}
+          className="text-indigo-600 font-medium py-2 px-6 rounded-lg border border-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-300"
+        >
+          Back to Home
+        </button>
       </div>
     </div>
   );

@@ -2,24 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../../components/Navbar/index';
 import BasicCard from '../../components/Projectcard/projectcard';
-import Button from 'react-bootstrap/esm/Button';
 import './account.css';
 
 const AccountPage = ({ user }) => {
-    const [mylistings, setMylistings] = useState([]); // User's projects
-    const [formIsOpen, setFormIsOpen] = useState(false); // Form toggle
-    const [skill, setSkill] = useState(''); // New skill input
-    const [skills, setSkills] = useState([]); // User's skills
+    const [mylistings, setMylistings] = useState([]);
+    const [formIsOpen, setFormIsOpen] = useState(false);
+    const [skill, setSkill] = useState('');
+    const [skills, setSkills] = useState([]);
     const avatarUrl = `https://api.dicebear.com/9.x/micah/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4,c0aede,d1d4f9`;
 
-    // Fetch user's projects
     useEffect(() => {
         async function fetchMyListings() {
             try {
                 const response = await axios.get('http://localhost:5000/projects');
-                const myProjects = response.data.filter(
-                    (project) => project.email === user.email
-                );
+                const myProjects = response.data.filter((project) => project.email === user.email);
                 setMylistings(myProjects);
             } catch (error) {
                 console.error("Error fetching user listings:", error);
@@ -28,7 +24,6 @@ const AccountPage = ({ user }) => {
         fetchMyListings();
     }, [user.email]);
 
-    // Fetch user's skills
     useEffect(() => {
         async function fetchSkills() {
             try {
@@ -43,50 +38,37 @@ const AccountPage = ({ user }) => {
         fetchSkills();
     }, [user.email]);
 
-    // Add a new skill
     const addSkill = async () => {
         try {
             const response = await axios.put(`http://localhost:5000/myaccount/${user.email}`, {
                 skill,
             });
             setSkills(response.data.skills);
-            setSkill(''); // Clear input field
+            setSkill('');
         } catch (error) {
             console.error("Error adding skill:", error);
         }
     };
 
-    // Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
         if (skill.trim()) addSkill();
     };
 
-    // Toggle the skill form
     const toggleForm = () => setFormIsOpen((prev) => !prev);
 
-    // Delete a project
     const deleteProject = async (projectId) => {
-        console.log('Attempting to delete project with ID:', projectId); // Debugging
-        if (!projectId) {
-            console.error('No project ID provided!');
-            return;
-        }
-    
+        if (!projectId) return;
+
         try {
             const response = await fetch(`http://localhost:5000/projects/${projectId}`, {
                 method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: user.email }),
             });
-    
+
             if (response.ok) {
-                console.log('Project deleted successfully');
-                setMylistings((prevListings) =>
-                    prevListings.filter((project) => project.id !== projectId)
-                );
+                setMylistings((prevListings) => prevListings.filter((project) => project.id !== projectId));
             } else {
                 const errorData = await response.json();
                 console.error('Error deleting project:', errorData.message);
@@ -95,51 +77,70 @@ const AccountPage = ({ user }) => {
             console.error('Error deleting project:', error);
         }
     };
-    
-    
+
     return (
-        <>
+        <div className="min-h-screen bg-gray-100 flex flex-col">
             <Navbar />
-            <div className="account-page">
-                <div className="account">
-                    <h2>{user.displayName}'s Profile</h2>
-                    <div className="topaccount">
-                        <div className="accountimg">
-                            <img className="userpic" src={avatarUrl} alt="User Avatar" />
-                        </div>
-                        <div className="accountskills">
-                            <div className="skillheading">
-                                <h3>Skills:</h3>
-                                <Button onClick={toggleForm}>
-                                    {formIsOpen ? "Close Form" : "Add Skill"}
-                                </Button>
-                            </div>
-                            {formIsOpen && (
-                                <form className="skillform" onSubmit={handleSubmit}>
-                                    <label>
-                                        <input
-                                            id="inputtext"
-                                            type="text"
-                                            value={skill}
-                                            onChange={(e) => setSkill(e.target.value)}
-                                            placeholder="Enter a skill"
-                                        />
-                                    </label>
-                                    <input id="submitbutton" type="submit" value="Submit" />
-                                </form>
-                            )}
-                            <ul className="skills-list">
-                                {skills.length > 0 ? (
-                                    skills.map((skill, index) => <li key={index}>{skill}</li>)
-                                ) : (
-                                    <li>No skills found</li>
-                                )}
-                            </ul>
+            <div className="container mx-auto px-4 py-8">
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <div className="flex items-center gap-6 mb-8">
+                        <img
+                            className="w-24 h-24 rounded-full shadow-md"
+                            src={avatarUrl}
+                            alt="User Avatar"
+                        />
+                        <div>
+                            <h2 className="text-2xl font-bold text-gray-800">{user.displayName}'s Profile</h2>
+                            <p className="text-sm text-gray-600">{user.email}</p>
                         </div>
                     </div>
-                    <div className="postings">
-                        <h3>My Posts:</h3>
-                        <ul className="postingcards">
+
+                    <div className="mb-10">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-xl font-semibold text-gray-800">Skills</h3>
+                            <button
+                                className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg shadow hover:bg-indigo-700 transition"
+                                onClick={toggleForm}
+                            >
+                                {formIsOpen ? 'Close Form' : 'Add Skill'}
+                            </button>
+                        </div>
+                        {formIsOpen && (
+                            <form className="flex items-center gap-4 mb-4" onSubmit={handleSubmit}>
+                                <input
+                                    type="text"
+                                    value={skill}
+                                    onChange={(e) => setSkill(e.target.value)}
+                                    placeholder="Enter a skill"
+                                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                <button
+                                    type="submit"
+                                    className="px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                        )}
+                        <ul className="flex flex-wrap gap-3">
+                            {skills.length > 0 ? (
+                                skills.map((skill, index) => (
+                                    <li
+                                        key={index}
+                                        className="px-3 py-1 bg-gray-200 text-gray-800 text-sm rounded-lg shadow"
+                                    >
+                                        {skill}
+                                    </li>
+                                ))
+                            ) : (
+                                <li className="text-sm text-gray-500">No skills found</li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-4">My Posts</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {mylistings.length > 0 ? (
                                 mylistings.map((project) => (
                                     <BasicCard
@@ -156,13 +157,13 @@ const AccountPage = ({ user }) => {
                                     />
                                 ))
                             ) : (
-                                <li>No projects found</li>
+                                <p className="text-sm text-gray-500">No projects found</p>
                             )}
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

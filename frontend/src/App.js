@@ -30,10 +30,11 @@ import ProjectSearchPage from './pages/projectsearch/projectsearch';
     <>
       <Routes>
         <Route path='/' element = { <Home/> } />
+        <Route path='/login' element={<Login/>} />
         <Route path='/dashboard' element ={user ? <Dashboard user={user} /> : <Login/> } />
         <Route path='/about' element ={user ? <About user={user} /> : <Login/> } />
         <Route path='/listings'  element= {user ? <Listings user={user} /> : <Login/> } />
-        <Route path='/contact-us' component={Contact} />
+        <Route path='/contact' element={user ? <Contact user={user} /> : <Login/> } />
         <Route path='/myaccount' element= {user ? <AccountPage user={user} /> : <Login/> } />
         <Route path='/projects' element= {user ? <AddProjectForm user={user} /> : <Login/> } />
         <Route path='/profile/:userId' element={user ? <UserProfilePage user={user} /> : <Login/> } />

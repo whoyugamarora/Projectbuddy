@@ -3,17 +3,18 @@
 .wrapper {
     height: auto;
     min-height: 100vh;
-    background-color: #f9f9f9; /* Deep dark background */
+    background-color: #f3f4f6; /* Slightly lighter background for a modern touch */
     width: 100vw;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .project-search-container {
-    padding: 0px;
-    color: #e0e0e0; /* Soft white text */
+    padding: 20px;
+    color: #1f2937; /* Neutral dark text for better contrast */
     width: 80vw;
     margin-inline: auto;
     animation: fadeIn 0.3s ease-in;
+    border-radius: 10px;
 }
 
 .project-search-header {
@@ -21,27 +22,27 @@
     font-size: 2.5rem;
     margin-top: 30px;
     margin-bottom: 30px;
-    color: black;
-    font-weight: 600; /* Warm orange */
+    color: #111827; /* Darker text for titles */
+    font-weight: 700;
 }
 
 .search-bar-container {
     display: flex;
-    justify-content: flex-start;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 40px;
     height: auto;
+    gap: 10px;
 }
 
 .search-bar-input {
     flex: 1;
     padding: 12px 15px;
-    border: 1px solid #333;
+    border: 1px solid #d1d5db;
     border-radius: 8px;
-    background-color: #f8f8f8;
-    color: black;
+    background-color: #f9fafb; /* Softer input background */
+    color: #374151;
     font-size: 1rem;
     margin-right: 10px;
     outline: none;
@@ -51,31 +52,34 @@
 }
 
 .search-bar-input::placeholder {
-    color: #b3b3b3;
+    color: #9ca3af; /* Subtle placeholder */
 }
 
 .search-bar-input:focus {
-    border-color: #006eff;
-    background-color: #e9e9e9;
+    border-color: #2563eb; /* Focus color matches button hover */
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
 }
 
 .search-bar-button {
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
-    background-color: #256CE1;
+    background-color: #4f46e5; /* Primary button color */
     color: white;
     font-size: 1rem;
-    font-weight:normal;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .search-bar-button:hover {
-    background-color: #fff;
-    color: black;
-    border: 1px solid black;
-
+    background-color: #1e40af; /* Slightly darker blue on hover */
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
 .project-list {
@@ -84,42 +88,54 @@
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    gap: 30px;
 }
-
 
 .project-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-title {
     font-size: 1.8rem;
     margin-bottom: 10px;
-    color: #ff9800;
+    color: #2563eb; /* Highlight color matches button */
 }
 
 .project-author, 
 .project-stack {
     font-size: 1rem;
-    color: #bdbdbd;
+    color: #6b7280;
     margin: 5px 0;
 }
 
 .loading-message {
     text-align: center;
     font-size: 1.2rem;
-    color: #256CE1;
+    color: #2563eb;
 }
 
 .error-message {
     text-align: center;
     font-size: 1.2rem;
-    color: #f44336; /* Bright red */
+    color: #ef4444; /* Vibrant error color */
 }
 
 .no-projects-message {
     text-align: center;
     font-size: 1.2rem;
-    color: black;
+    color: #374151; /* Neutral message color */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

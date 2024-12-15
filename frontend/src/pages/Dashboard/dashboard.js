@@ -1,23 +1,17 @@
 import Navbar from '../../components/Navbar/index';
 import React, { useEffect, useState } from 'react';
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import ProjectCard from '../../components/Projectcard/projectcard';
-import './dashboard.css';
-import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
-import axios from 'axios';
 import BasicCard from '../../components/Projectcard/projectcard';
+import { useNavigate } from 'react-router-dom';
 
-function repeatprojectcard(projectData, skill, user) {
-  const filteredProjects = Array.isArray(projectData) 
-    ? projectData.filter(project => project.stack.includes(skill)).slice(0,3)
+function repeatProjectCard(projectData, skill) {
+  const filteredProjects = Array.isArray(projectData)
+    ? projectData.filter((project) => project.stack.includes(skill)).slice(0, 3) // Limit to 3 cards
     : [];
-  
-  return filteredProjects.map(project => (
-    <BasicCard 
-      key={project.id} 
-      userId={project.userId} // Pass uploader’s userId here
+
+  return filteredProjects.map((project) => (
+    <BasicCard
+      key={project.id}
+      userId={project.userId}
       project={project}
       title={project.title}
       subheader={project.author}
@@ -44,80 +38,83 @@ const Dashboard = ({ user }) => {
         const data = await response.json();
         setProjectData(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Error fetching project data:", error);
-        setProjectData([]); // Set to empty array in case of error
+        console.error('Error fetching project data:', error);
+        setProjectData([]);
       }
     }
     fetchProjects();
   }, []);
-  
+
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       <Navbar />
-      <div className="containerx">
-        <div className="sidebar">
-          <div className="sidebar-avatar">
-            <Card.Body className='cardbody'>
-              <Card.Title>Welcome</Card.Title>
-               <br />
-               <img
-                  className='userpic'
-                  src={avatarUrl}
-                  alt='User Avatar'
-                />
-              <br />
-              <Card.Subtitle className="mb-2 text-muted displayname">
-                Logged in as {user.displayName}
-              </Card.Subtitle>
-              <br/><br/>
-            </Card.Body>
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-20">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-center md:text-left">
+            <h1 className="text-4xl font-bold">Welcome, {user.displayName}</h1>
+            <p className="mt-2 text-lg">Discover projects tailored to your skills and interests.</p>
+          </div>
+          <img
+            src={avatarUrl}
+            alt="User Avatar"
+            className="w-32 h-32 rounded-full shadow-lg"
+          />
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-10 space-y-8">
+        {/* Java Section */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold">Java Projects</h2>
+            <button
+              onClick={navigateToListings}
+              className="px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition"
+            >
+              Explore More
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {repeatProjectCard(projectData, 'Java')}
           </div>
         </div>
 
-        <div className="main">
-          <div className="main-content">
-            <h2>Featured Projects</h2>
-            <br/>
-            <div className="project-section">
-              <div className="project-header">
-                <h3>Java</h3>
-                <Button className="listings-button" onClick={navigateToListings}>
-                  View All Java Projects
-                </Button>
-              </div>
-              <div className='projectcards'>
-                {repeatprojectcard(projectData, "Java", user)}
-              </div>
-            </div>
-            <br/>
-            <div className="project-section">
-              <div className="project-header">
-                <h3>SQL</h3>
-                <Button className="listings-button" onClick={navigateToListings}>
-                  View All SQL Projects
-                </Button>
-              </div>
-              <div className='projectcards'>
-                {repeatprojectcard(projectData, "SQL", user)}
-              </div>
-            </div>
-            <br/>
-            <div className="project-section">
-              <div className="project-header">
-                <h3>Python</h3>
-                <Button className="listings-button" onClick={navigateToListings}>
-                  View All Python Projects
-                </Button>
-              </div>
-              <div className='projectcards'>
-                {repeatprojectcard(projectData, "Python", user)}
-              </div>
-            </div>
+        {/* SQL Section */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold">SQL Projects</h2>
+            <button
+              onClick={navigateToListings}
+              className="px-4 py-2 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition"
+            >
+              Explore More
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {repeatProjectCard(projectData, 'SQL')}
+          </div>
+        </div>
+
+        {/* Python Section */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold">Python Projects</h2>
+            <button
+              onClick={navigateToListings}
+              className="px-4 py-2 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition"
+            >
+              Explore More
+            </button>
+          </div>
+          <div className="grid grid-cols-1 mmd:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {repeatProjectCard(projectData, 'Python')}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;
