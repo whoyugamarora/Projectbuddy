@@ -9,9 +9,16 @@ require('dotenv').config();
 
 
 const app = express();
-app.use(cors({
-  origin: ['http://localhost:3000']
-}));
+
+const corsOptions = {
+  origin: 'https://projectbuddy.pages.dev', // Your frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  credentials: true // Allow cookies and authentication headers
+};
+
+app.use(cors(corsOptions));
+
+
 
 // Connect to the MongoDB database
 mongoose.connect( process.env.REACT_APP_MONGODB_API , {
