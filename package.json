@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "description": "https://github.com/mui/material-ui/blob/v5.10.14/docs/data/material/components/cards/BasicCard.js",
-  "proxy": "https://localhost:3386/",
+  "options": {
+    "allowedHosts": [
+      "localhost",
+      ".localhost"
+    ],
+    "proxy": "https://localhost:3386/"
+  },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
