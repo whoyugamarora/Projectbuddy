@@ -14,7 +14,7 @@ import Listings from './pages/Listings/listings';
 import AddProjectForm from './pages/NewListing/newlisting';
 import UserProfilePage from './pages/publicprofile/userprofilepage';
 import ProjectSearchPage from './pages/projectsearch/projectsearch';
-
+import ProjectIdeasPage from './pages/Ideaforum/Idea';
 
 
   function App() {
@@ -39,6 +39,7 @@ import ProjectSearchPage from './pages/projectsearch/projectsearch';
         <Route path='/projects' element= {user ? <AddProjectForm user={user} /> : <Login/> } />
         <Route path='/profile/:userId' element={user ? <UserProfilePage user={user} /> : <Login/> } />
         <Route path='/search' element={user ? <ProjectSearchPage user={user} /> : <Login/> } />
+        <Route path='/idea' element={user ? <ProjectIdeasPage user={user} /> : <Login/> } />
       </Routes>
      
     </>

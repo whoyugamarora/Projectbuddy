@@ -17,11 +17,12 @@ const Navbar = () => {
 
       {/* Menu Links */}
       <NavMenu isOpen={isOpen}>
-        <NavLink to="/about" activeStyle>About</NavLink>
         <NavLink to="/search" activeStyle>Search</NavLink>
-        <NavLink to="/contact" activeStyle>Contact Us</NavLink>
-        <NavLink to="/listings" activeStyle>Listings</NavLink>
         <NavLink to="/projects" activeStyle>Add New</NavLink>
+        <NavLink to="/listings" activeStyle>Listings</NavLink>
+        <NavLink to="/idea" activeStyle>Ideas</NavLink>
+        <NavLink to="/about" activeStyle>About</NavLink>
+        <NavLink to="/contact" activeStyle>Contact Us</NavLink>
       </NavMenu>
 
       {/* Buttons */}

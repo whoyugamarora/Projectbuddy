@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const projectsRoutes = require('./routes/projects');
 const skillRoutes = require('./routes/skills');
+const ideaRoutes = require('./routes/ideaRoutes')
+require('dotenv').config();
+
 
 const app = express();
 app.use(cors({
@@ -12,7 +15,7 @@ app.use(cors({
 }));
 
 // Connect to the MongoDB database
-mongoose.connect('mongodb+srv://yugamarora:tanujarora@projectbuddy.su0yg.mongodb.net/?retryWrites=true&w=majority&appName=Projectbuddy', {
+mongoose.connect( process.env.REACT_APP_MONGODB_API , {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -34,6 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use the projects routes for all requests starting with /projects
 app.use('/projects', projectsRoutes);
 app.use('/myaccount', skillRoutes);
+app.use('/idea', ideaRoutes);
 
 // Start the server
 app.listen(5000, () => {

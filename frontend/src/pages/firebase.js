@@ -4,7 +4,7 @@ import "firebase/compat/auth";
 
 const firebaseConfig = {
   // Your Config Goes Here
-  apiKey: "AIzaSyAQvTxUZ3Coa5tWom-M0DJZVdcktdX4GEU",
+  apiKey: process.env.REACT_APP_FIREBASE_API,
   authDomain: "projectbuddy-ufv.firebaseapp.com",
   projectId: "projectbuddy-ufv",
   storageBucket: "projectbuddy-ufv.appspot.com",

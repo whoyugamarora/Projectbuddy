@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../../components/Navbar/index';
 import BasicCard from '../../components/Projectcard/projectcard';
+import ReusableCard from '../../components/Ideacard/Ideacard';
 
 const AccountPage = ({ user }) => {
     const [mylistings, setMylistings] = useState([]);
+    const [myIdeas, setMyIdeas] = useState([]);
     const [formIsOpen, setFormIsOpen] = useState(false);
     const [skill, setSkill] = useState('');
     const [skills, setSkills] = useState([]);
@@ -16,6 +18,10 @@ const AccountPage = ({ user }) => {
                 const response = await axios.get('http://localhost:5000/projects');
                 const myProjects = response.data.filter((project) => project.email === user.email);
                 setMylistings(myProjects);
+                const idearesponse = await axios.get('http://localhost:5000/idea/');
+                const myIdeas = idearesponse.data.filter((idea) => idea.email === user.email);
+                console.log(myIdeas);
+                setMyIdeas(myIdeas);
             } catch (error) {
                 console.error("Error fetching user listings:", error);
             }
@@ -84,7 +90,7 @@ const AccountPage = ({ user }) => {
                 <div className="bg-white p-8 rounded-lg shadow-md">
                     <div className="flex items-center gap-6 mb-8">
                         <img
-                            className="w-24 h-24 rounded-full shadow-md"
+                            className="w-24 h-24 rounded-full shadow-md border-2 border-indigo-500"
                             src={avatarUrl}
                             alt="User Avatar"
                         />
@@ -137,9 +143,9 @@ const AccountPage = ({ user }) => {
                         </ul>
                     </div>
 
-                    <div>
+                    <div className='my-4'>
                         <h3 className="text-xl font-semibold text-gray-800 mb-4">My Posts</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                             {mylistings.length > 0 ? (
                                 mylistings.map((project) => (
                                     <BasicCard
@@ -157,6 +163,27 @@ const AccountPage = ({ user }) => {
                                 ))
                             ) : (
                                 <p className="text-sm text-gray-500">No projects found</p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-4">My Ideas</h3>
+                        <div className="list-none grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                            {myIdeas.length > 0 ? (
+                                myIdeas.map((idea) => (
+                                    <ReusableCard
+                                        key={idea._id}
+                                        avatarSeed={idea.email}
+                                        title={idea.title}
+                                        author={idea.author}
+                                        description={idea.description}
+                                        votes={idea.votes}
+                                        createdAt={idea.createdAt}
+                                    />
+                                ))
+                            ) : (
+                                <p className="text-sm text-gray-500">No Ideas found</p>
                             )}
                         </div>
                     </div>

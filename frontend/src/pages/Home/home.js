@@ -12,17 +12,17 @@ const Home = () => {
             A collaborative platform where developers, designers, and creators come together to build something amazing.
           </p>
           <div className="mt-8">
+          <a
+              href="/dashboard"
+              className="ml-4 inline-block bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-indigo-800 transition duration-300"
+            >
+              Get Started
+            </a>
             <a
               href="/listings"
               className="inline-block bg-white text-indigo-600 font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-100 transition duration-300"
             >
               Explore Projects
-            </a>
-            <a
-              href="/dashboard"
-              className="ml-4 inline-block bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-indigo-800 transition duration-300"
-            >
-              Get Started
             </a>
           </div>
         </div>

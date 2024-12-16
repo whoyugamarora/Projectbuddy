@@ -1,168 +1,80 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import Avatar from '@mui/material/Avatar';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useState } from 'react';
 
-export default function BasicCard(props) {
+export default function BasicCard({
+  title = "Project Title",
+  subheader = "John Doe",
+  description = "This is a stunning project card that feels unique, modern, and visually engaging.",
+  stack = ["React", "Tailwind", "Firebase"],
+  email = "user@example.com",
+  userId = "1",
+  currentUserEmail,
+  project,
+  onDelete
+}) {
+  const [hovered, setHovered] = useState(false);
+
   const avatarUrl = `https://api.dicebear.com/9.x/micah/svg?seed=${encodeURIComponent(
-    props.email || 'User'
-  )}&backgroundColor=b6e3f4,c0aede,ffe4b3`;
+    email || 'User'
+  )}&backgroundColor=f3f4f6,e5e7eb`;
 
   return (
-    <Card
-      sx={{
-        width: 360,
-        margin: '20px auto',
-        borderRadius: '16px',
-        overflow: 'hidden',
-        background: 'linear-gradient(to bottom, #ffffff, #f9fafb)',
-        position: 'relative',
-        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.1)',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        '&:hover': {
-          transform: 'translateY(-10px)',
-          boxShadow: '0 12px 30px rgba(0, 0, 0, 0.2)',
-        },
+    <div
+      className={`relative w-96 rounded-3xl p-6 bg-white shadow-lg hover:shadow-2xl transition-all duration-300 ${
+        hovered ? 'transform -translate-y-3' : ''
+      }`}
+      style={{
+        background: 'rgba(255, 255, 255, 0.85)',
+        backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
       }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      {/* Gradient Accent Layer */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-20%',
-          right: '-10%',
-          width: '120px',
-          height: '120px',
-          background: 'radial-gradient(circle, rgba(79, 70, 229, 0.4), transparent)',
-          filter: 'blur(50px)',
-          zIndex: 0,
-        }}
-      />
+      {/* Floating Gradient Circle */}
+      <div className="absolute -top-5 -left-5 w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 blur-3xl"></div>
 
       {/* Header Section */}
-      <CardHeader
-        avatar={
-          <Avatar
-            src={avatarUrl}
-            alt="User Avatar"
-            sx={{
-              width: 70,
-              height: 70,
-              border: '3px solid #ffffff',
-              boxShadow: '0 5px 15px rgba(79, 70, 229, 0.3)',
-              zIndex: 2,
-            }}
-          />
-        }
-        title={
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 700,
-              color: '#1f2937',
-              zIndex: 2,
-            }}
-          >
-            {props.title}
-          </Typography>
-        }
-        subheader={
-          <Typography
-            variant="body2"
-            sx={{
-              color: '#6b7280',
-              zIndex: 2,
-            }}
-          >
-            {props.subheader}
-          </Typography>
-        }
-        sx={{
-          position: 'relative',
-          zIndex: 2,
-        }}
-      />
+      <div className="flex items-center gap-4 mb-4">
+        <img
+          src={avatarUrl}
+          alt="User Avatar"
+          className="w-14 h-14 rounded-full border-2 border-indigo-500 shadow-sm"
+        />
+        <div>
+          <h2 className="text-lg font-bold text-gray-800">{title}</h2>
+          <p className="text-sm text-gray-500">by {subheader}</p>
+        </div>
+      </div>
 
       {/* Content Section */}
-      <CardContent sx={{ zIndex: 2 }}>
-        <Typography
-          variant="body2"
-          sx={{
-            color: '#4b5563',
-            fontSize: '0.95rem',
-            lineHeight: 1.6,
-          }}
-        >
-          {props.description}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            marginTop: 2,
-            fontWeight: 600,
-            color: '#4f46e5',
-          }}
-        >
-          <strong>Tech Stack:</strong>{' '}
-          {Array.isArray(props.stack)
-            ? props.stack.join(', ')
-            : props.stack}
-        </Typography>
-      </CardContent>
+      <p className="text-gray-600 text-sm mb-4">{description}</p>
+      <div className="text-sm mb-4">
+        <span className="font-semibold text-gray-700">Tech Stack: </span>
+        <span className="text-indigo-800 font-medium">
+          {Array.isArray(stack) ? stack.join(', ') : stack}
+        </span> 
+      </div>
 
-      {/* Actions Section */}
-      <CardActions
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          paddingX: 2,
-          paddingBottom: 2,
-          zIndex: 2,
-        }}
-      >
-        <Link to={`/profile/${props.userId}`} style={{ textDecoration: 'none' }}>
-          <Button
-            size="medium"
-            sx={{
-              textTransform: 'capitalize',
-              color: '#ffffff',
-              backgroundColor: '#4f46e5',
-              fontWeight: 600,
-              borderRadius: '8px',
-              paddingX: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                backgroundColor: '#4338ca',
-              },
-            }}
-          >
+      {/* Action Buttons */}
+      <div className="flex justify-between items-center">
+        <Link to={`/profile/${userId}`}>
+          <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium text-sm hover:from-purple-500 hover:to-blue-500 transform hover:scale-105 transition-all duration-300">
             Connect
-          </Button>
+          </button>
         </Link>
 
-        {props.currentUserEmail === props.email && (
-          <IconButton
-            aria-label="delete"
-            onClick={() => props.onDelete(props.project?.id || props.project?._id)}
-            sx={{
-              color: '#ef4444',
-              '&:hover': {
-                backgroundColor: '#fee2e2',
-                borderRadius: '50%',
-              },
-            }}
+        {currentUserEmail === email && (
+          <button
+            onClick={() => onDelete?.(project?.id || project?._id || '')}
+            className="p-2 text-red-500 hover:bg-red-100 rounded-lg transition-all duration-300"
           >
-            <DeleteIcon />
-          </IconButton>
+            <DeleteIcon fontSize="small" />
+          </button>
         )}
-      </CardActions>
-    </Card>
+      </div>
+    </div>
   );
 }
