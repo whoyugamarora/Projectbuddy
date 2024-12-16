@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const admin = require('firebase-admin');
 const projectsRoutes = require('./routes/projects');
 const skillRoutes = require('./routes/skills');
 const ideaRoutes = require('./routes/ideaRoutes')
