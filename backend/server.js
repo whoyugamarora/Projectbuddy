@@ -30,6 +30,10 @@ db.once('open', function() {
   console.log('Connected to MongoDB!');
 });
 
+app.get("/", (req, res) => {
+  res.status(200).json("Welcome, you app is working well");
+});
+
 // Use body-parser to parse incoming request bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
