@@ -13,7 +13,7 @@ function ProjectSearchPage() {
         try {
             setLoading(true);
             setError('');
-            const response = await fetch(`http://localhost:5000/projects/search?query=${searchQuery}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/projects/search?query=${searchQuery}`);
             if (!response.ok) throw new Error('Failed to fetch projects.');
             const data = await response.json();
             setProjects(data);

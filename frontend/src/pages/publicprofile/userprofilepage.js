@@ -19,7 +19,7 @@ const UserProfilePage = () => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/projects/profile/${userId}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/profile/${userId}`);
                 setUser(response.data.user);
                 setProjects(response.data.projects);
             } catch (err) {

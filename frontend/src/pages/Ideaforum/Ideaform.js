@@ -10,7 +10,7 @@ const AddIdeaForm = () => {
         e.preventDefault();
 
         try {
-            await axios.post('http://localhost:5000/idea/', { title, description, userId, author, email });
+            await axios.post(`${process.env.REACT_APP_API_URL}/idea/`, { title, description, userId, author, email });
             alert('Idea submitted successfully!');
             setTitle('');
             setDescription('');

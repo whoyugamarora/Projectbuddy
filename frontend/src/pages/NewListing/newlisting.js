@@ -38,7 +38,7 @@ function AddProjectForm() {
 
     try {
       setIsSubmitting(true); // Disable the form while submitting
-      const response = await axios.post("http://localhost:5000/projects", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/projects`, {
         title,
         description,
         stack: stack.split(',').map((item) => item.trim()), // Split and trim stack

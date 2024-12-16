@@ -15,10 +15,10 @@ const AccountPage = ({ user }) => {
     useEffect(() => {
         async function fetchMyListings() {
             try {
-                const response = await axios.get('http://localhost:5000/projects');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/projects`);
                 const myProjects = response.data.filter((project) => project.email === user.email);
                 setMylistings(myProjects);
-                const idearesponse = await axios.get('http://localhost:5000/idea/');
+                const idearesponse = await axios.get(`${process.env.REACT_APP_API_URL}/idea/`);
                 const myIdeas = idearesponse.data.filter((idea) => idea.email === user.email);
                 console.log(myIdeas);
                 setMyIdeas(myIdeas);
@@ -32,7 +32,7 @@ const AccountPage = ({ user }) => {
     useEffect(() => {
         async function fetchSkills() {
             try {
-                const response = await axios.get(`http://localhost:5000/myaccount/${user.email}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/myaccount/${user.email}`);
                 if (response.data?.skills) {
                     setSkills(response.data.skills);
                 }
@@ -45,7 +45,7 @@ const AccountPage = ({ user }) => {
 
     const addSkill = async () => {
         try {
-            const response = await axios.put(`http://localhost:5000/myaccount/${user.email}`, {
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/myaccount/${user.email}`, {
                 skill,
             });
             setSkills(response.data.skills);
@@ -66,7 +66,7 @@ const AccountPage = ({ user }) => {
         if (!projectId) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/projects/${projectId}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/projects/${projectId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: user.email }),

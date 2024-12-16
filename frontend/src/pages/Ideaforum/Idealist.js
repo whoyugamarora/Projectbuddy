@@ -10,7 +10,7 @@ const IdeasList = () => {
     useEffect(() => {
         const fetchIdeas = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/idea');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/idea`);
                 setIdeas(response.data);
             } catch (err) {
                 console.error('Failed to fetch ideas:', err.message);
@@ -22,7 +22,7 @@ const IdeasList = () => {
 
     const handleUpvote = async (id) => {
         try {
-            const response = await axios.put(`http://localhost:5000/idea/${id}/upvote`);
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/idea/${id}/upvote`);
             setIdeas((prevIdeas) =>
                 prevIdeas.map((idea) => (idea._id === id ? response.data : idea))
             );

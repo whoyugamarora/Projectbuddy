@@ -34,7 +34,7 @@ const Dashboard = ({ user }) => {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const response = await fetch('http://localhost:5000/projects');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/projects`);
         const data = await response.json();
         setProjectData(Array.isArray(data) ? data : []);
       } catch (error) {
