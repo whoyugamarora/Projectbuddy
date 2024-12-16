@@ -11,9 +11,14 @@ require('dotenv').config();
 const app = express();
 
 const corsOptions = {
-  origin: 'https://projectbuddy.pages.dev', // Your frontend domain
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  credentials: true // Allow cookies and authentication headers
+  origin: (origin, callback) => {
+      const allowedOrigins = ['https://projectbuddy.pages.dev', 'https://projectbuddy.yugamarora.dev'];
+      if (allowedOrigins.includes(origin)) {
+          callback(null, true);
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
+  }
 };
 
 app.use(cors(corsOptions));
