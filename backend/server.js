@@ -12,7 +12,7 @@ const app = express();
 
 const corsOptions = {
   origin: (origin, callback) => {
-      const allowedOrigins = ['https://projectbuddy.pages.dev', 'https://projectbuddy.yugamarora.dev', 'http://localhost:3000'];
+      const allowedOrigins = ['https://projectbuddy.pages.dev', 'https://projectbuddy.yugamarora.dev', 'http://localhost:3000', 'http://localhost:3000', 'http://100.114.44.75:3000'];
       if (allowedOrigins.includes(origin)) {
           callback(null, true);
       } else {

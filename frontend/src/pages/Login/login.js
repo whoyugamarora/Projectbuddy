@@ -5,6 +5,8 @@ import {
   registerWithEmailAndPassword,
 } from "../firebase";
 import { useNavigate } from "react-router-dom"; // For navigation
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -16,7 +18,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
       <div className="w-full max-w-5xl bg-white rounded-xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Login Section */}
         <div>
@@ -51,7 +53,7 @@ const Login = () => {
                 className="w-full px-4 py-2 mt-1 bg-gray-100 border rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none"
               />
             </div>
-            <div className="mt-4 flex flex-col gap-2">
+            <div className="mt-4 w-full flex flex-col gap-3">
               <button
                 type="button"
                 onClick={() => signInWithEmailAndPassword(loginEmail, loginPassword)}
@@ -64,7 +66,7 @@ const Login = () => {
                 onClick={signInWithGoogle}
                 className="w-full bg-gray-100 text-gray-700 font-medium py-2 rounded-lg hover:bg-gray-200 transition duration-300"
               >
-                <i className="fab fa-google mr-2"></i> Sign in with Google
+                <FontAwesomeIcon icon={faGoogle} size="md" /><span className="mx-2">Sign in with Google</span>
               </button>
             </div>
           </form>
@@ -119,7 +121,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => registerWithEmailAndPassword(name, email, password)}
-              className="w-full bg-green-600 text-white font-medium py-2 rounded-lg hover:bg-green-700 transition duration-300"
+              className=" w-full bg-green-600 text-white font-medium py-2 rounded-lg hover:bg-green-700 transition duration-300"
             >
               Register
             </button>
@@ -128,7 +130,7 @@ const Login = () => {
       </div>
 
       {/* Back to Home Button */}
-      <div className="absolute bottom-8">
+      <div className="my-10">
         <button
           onClick={() => navigate("/")}
           className="text-indigo-600 font-medium py-2 px-6 rounded-lg border border-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-300"
