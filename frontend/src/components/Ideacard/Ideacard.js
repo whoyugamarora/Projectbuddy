@@ -5,14 +5,14 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 const ReusableCard = ({ avatarSeed, title, author, description, votes, createdAt, onUpvote }) => {
   return (
     <li
-      className="bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 p-6 relative"
+      className="bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-300 rounded-3xl shadow-md hover:shadow-lg transition-transform transform hover:scale-105 p-6 relative"
     >
       {/* Header Section */}
       <div className="flex items-center mb-6">
         <img
           src={`https://api.dicebear.com/5.x/micah/svg?seed=${avatarSeed}`}
           alt="User Avatar"
-          className="w-12 h-12 rounded-full shadow-md border-2 border-indigo-500"
+          className="w-16 h-16 rounded-full shadow-md border-2 border-indigo-500"
         />
         <div className="ml-4">
           <h3 className="text-lg font-bold text-gray-800">{title}</h3>
@@ -34,7 +34,7 @@ const ReusableCard = ({ avatarSeed, title, author, description, votes, createdAt
       {/* Upvote Button */}
       <button
         onClick={onUpvote}
-        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-4 py-2 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-transform transform hover:scale-105 flex items-center justify-center gap-2"
+        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-4 py-2 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-transform transform hover:scale-100 flex items-center justify-center gap-2"
       >
         <FontAwesomeIcon icon={faThumbsUp} />
         <span>Upvote</span>

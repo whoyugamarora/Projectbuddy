@@ -14,6 +14,13 @@ export const Nav = styled.nav`
   left: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 880px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
 `;
 
 export const NavLink = styled(Link)`
@@ -50,22 +57,25 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 1;
 
   @media screen and (max-width: 880px) {
-    display: none;
-    flex-direction: column;
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
     position: absolute;
-    top: 65px;
+    top: 65px; /* Push it down below the navbar */
     left: 0;
     width: 100%;
-    background: #4f46e5; /* Indigo-600 for mobile dropdown */
+    background: #4f46e5; /* Indigo-600 background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 1rem 0;
+    z-index: 999;
 
-    &.active {
-      display: flex;
-      row-gap: 1rem;
-      padding: 1rem 0;
-    }
+    /* Add smooth transition */
+    transition: transform 0.3s ease-in-out;
+    transform: ${({ isOpen }) => (isOpen ? "translateY(0)" : "translateY(-200%)")};
   }
 `;
 
@@ -76,15 +86,27 @@ export const NavBtn = styled.div`
 
   @media screen and (max-width: 880px) {
     display: none;
-
-    &.active {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1rem; /* Adds spacing from links */
+    margin-left: 0;
   }
 `;
+
+export const NavBtnMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+
+  @media screen and (min-width: 880px) {
+    display: none; /* Hide mobile buttons on desktop */
+  }
+`;
+
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;

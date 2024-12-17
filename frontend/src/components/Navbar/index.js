@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink, HeadingLink } from "./NavbarElements";
+import {
+  Nav,
+  NavLink,
+  Bars,
+  NavMenu,
+  NavBtn,
+  NavBtnMobile,
+  NavBtnLink,
+  HeadingLink,
+} from "./NavbarElements";
 import { auth } from "../../pages/firebase";
 
 const Navbar = () => {
@@ -23,10 +32,16 @@ const Navbar = () => {
         <NavLink to="/idea" activeStyle>Ideas</NavLink>
         <NavLink to="/about" activeStyle>About</NavLink>
         <NavLink to="/contact" activeStyle>Contact Us</NavLink>
+
+        {/* Buttons (Mobile Only) */}
+        <NavBtnMobile>
+          <NavBtnLink to="/myaccount">Account</NavBtnLink>
+          <NavBtnLink onClick={() => auth.signOut()}>Sign Out</NavBtnLink>
+        </NavBtnMobile>
       </NavMenu>
 
-      {/* Buttons */}
-      <NavBtn>
+      {/* Buttons (Desktop Only) */}
+      <NavBtn className="desktop-only">
         <NavBtnLink to="/myaccount">Account</NavBtnLink>
         <NavBtnLink onClick={() => auth.signOut()}>Sign Out</NavBtnLink>
       </NavBtn>

@@ -86,7 +86,7 @@ const AccountPage = ({ user }) => {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <Navbar />
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-2.5 md:px-4 py-8">
                 <div className="bg-white p-8 rounded-lg shadow-md">
                     <div className="flex items-center gap-6 mb-8">
                         <img

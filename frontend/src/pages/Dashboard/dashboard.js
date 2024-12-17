@@ -52,8 +52,8 @@ const Dashboard = ({ user }) => {
       <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-20">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <h1 className="text-4xl font-bold">Welcome, {user.displayName}</h1>
-            <p className="mt-2 text-lg">Discover projects tailored to your skills and interests.</p>
+            <h1 className="text-3xl font-bold sm:text-4xl">Welcome, {user.displayName}</h1>
+            <p className="mt-2 text-md md:text-lg">Discover projects tailored to your skills and interests.</p>
           </div>
           <img
             src={avatarUrl}
@@ -64,14 +64,14 @@ const Dashboard = ({ user }) => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-10 space-y-8">
+      <div className="container mx-auto px-3 py-10 space-y-8">
         {/* Java Section */}
         <div className="bg-white shadow-lg rounded-lg p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-semibold">Java Projects</h2>
+          <div className="flex justify-between items-center mb-7">
+            <h2 className="text-xl md:text-2xl font-semibold">Java Projects</h2>
             <button
               onClick={navigateToListings}
-              className="px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition"
+              className="px-3 md:px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition text-xs md:text-lg"
             >
               Explore More
             </button>
@@ -83,11 +83,11 @@ const Dashboard = ({ user }) => {
 
         {/* SQL Section */}
         <div className="bg-white shadow-lg rounded-lg p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-semibold">SQL Projects</h2>
+          <div className="flex justify-between items-center mb-7">
+            <h2 className="text-xl md:text-2xl font-semibold">SQL Projects</h2>
             <button
               onClick={navigateToListings}
-              className="px-4 py-2 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition"
+              className="px-3 md:px-4 py-2 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition text-xs md:text-lg"
             >
               Explore More
             </button>
@@ -99,11 +99,11 @@ const Dashboard = ({ user }) => {
 
         {/* Python Section */}
         <div className="bg-white shadow-lg rounded-lg p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-semibold">Python Projects</h2>
+          <div className="flex justify-between items-center mb-7">
+            <h2 className="text-xl md:text-2xl font-semibold">Python Projects</h2>
             <button
               onClick={navigateToListings}
-              className="px-4 py-2 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition"
+              className="px-3 md:px-4 py-2 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition text-xs md:text-lgn"
             >
               Explore More
             </button>

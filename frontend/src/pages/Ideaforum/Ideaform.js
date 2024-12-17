@@ -30,8 +30,8 @@ const AddIdeaForm = () => {
     const email = currentUser.email;
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 bg-gray-100 rounded shadow w-full">
-            <h2 className="font-bold">Share a New Idea</h2>
+        <form onSubmit={handleSubmit} className="bg-gray-100 rounded shadow w-full h-full space-y-2 px-4 py-10">
+            <h2 className="font-bold text-center">Share a New Idea</h2>
             <input
                 type="text"
                 value={title}
@@ -47,12 +47,14 @@ const AddIdeaForm = () => {
                 className="border p-2 w-full mb-4"
                 required
             />
+            <div className='flex items-center justify-center mx-auto'>
             <button
                 type="submit"
-                className="bg-green-500 text-white px-4 py-2 rounded"
+                className="w-3/4 bg-green-500 text-white px-4 py-2 rounded"
             >
                 Submit Idea
             </button>
+            </div>
         </form>
     );
 };

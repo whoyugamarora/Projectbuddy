@@ -32,25 +32,28 @@ const IdeasList = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-50">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Project Ideas</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {ideas.map((idea) => (
-                    <ReusableCard
-                        key={idea._id}
-                        avatarSeed={idea.email}
-                        title={idea.title}
-                        author={idea.author}
-                        description={idea.description}
-                        votes={idea.votes}
-                        createdAt={idea.createdAt}
-                        onUpvote={() => handleUpvote(idea._id)}
-                    />
-                ))}
-            </ul>
-
-
+        <div className="p-6 bg-gray-50 rounded shadow flex justify-center items-center">
+            <div className="w-full">
+                <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+                    Project Ideas
+                </h2>
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-0">
+                    {ideas.map((idea) => (
+                        <ReusableCard
+                            key={idea._id}
+                            avatarSeed={idea.email}
+                            title={idea.title}
+                            author={idea.author}
+                            description={idea.description}
+                            votes={idea.votes}
+                            createdAt={idea.createdAt}
+                            onUpvote={() => handleUpvote(idea._id)}
+                        />
+                    ))}
+                </ul>
+            </div>
         </div>
+
     );
 };
 

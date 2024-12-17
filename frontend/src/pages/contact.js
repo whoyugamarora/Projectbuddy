@@ -69,7 +69,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Information */}
-        <div className="flex flex-col justify-center space-y-6">
+        <div className="flex flex-col justify-center space-y-6 p-2">
           <h2 className="text-2xl font-bold text-indigo-600">Contact Information</h2>
           <p className="text-gray-600">
             Feel free to reach out to us directly through the following channels:

@@ -58,7 +58,7 @@ const About = () => {
       </section>
 
       {/* Call-to-Action */}
-      <section className="text-center py-16">
+      <section className="text-center py-16 px-4">
         <h3 className="text-2xl font-semibold mb-4 text-gray-800">
           Ready to Explore and Collaborate?
         </h3>

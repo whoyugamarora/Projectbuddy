@@ -24,12 +24,12 @@ const ProjectIdeasPage = () => {
       {/* Content Section */}
       <div className="container mx-auto px-2 py-10 flex flex-col md:flex-col lg:flex-row gap-8">
         {/* Idea Submission Form */}
-        <div className="bg-white p-6 mx-auto rounded shadow-lg lg:w-1/3 md:w-2/3 sm:w-full">
+        <div className="bg-white p-6 mx-auto rounded shadow-lg w-full lg:w-1/3 md:w-2/3 sm:w-full">
           <AddIdeaForm />
         </div>
 
         {/* Ideas List */}
-        <div className="md:w-2/3">
+        <div className="w-full md:w-full lg:w-2/3 mx-auto">
           <IdeasList />
         </div>
       </div>

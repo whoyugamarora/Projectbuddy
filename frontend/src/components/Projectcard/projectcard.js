@@ -22,7 +22,7 @@ export default function BasicCard({
 
   return (
     <div
-      className={`relative w-96 rounded-3xl p-6 bg-white shadow-lg hover:shadow-2xl transition-all duration-300 ${
+      className={`relative w-full rounded-3xl p-6 bg-white shadow-lg hover:shadow-2xl transition-all duration-300 ${
         hovered ? 'transform -translate-y-3' : ''
       }`}
       style={{
