@@ -1,9 +1,18 @@
 import Navbar from '../../components/Navbar/index';
 import React, { useEffect, useState } from 'react';
 import BasicCard from '../../components/Projectcard/projectcard';
+import BasicCardSkeleton from '../../components/Projectcard/BasicCardSkeleton';
 import { useNavigate } from 'react-router-dom';
 
-function repeatProjectCard(projectData, skill) {
+function repeatProjectCard(projectData, skill, loading) {
+  if (loading) {
+    // Show Skeletons while loading
+    return Array(3)
+      .fill(0)
+      .map((_, index) => <BasicCardSkeleton key={`skeleton-${index}`} />);
+  }
+
+  // Filter and display actual project cards
   const filteredProjects = Array.isArray(projectData)
     ? projectData.filter((project) => project.stack.includes(skill)).slice(0, 3) // Limit to 3 cards
     : [];
@@ -25,6 +34,7 @@ function repeatProjectCard(projectData, skill) {
 const Dashboard = ({ user }) => {
   const navigate = useNavigate();
   const [projectData, setProjectData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const avatarUrl = `https://api.dicebear.com/9.x/micah/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4,c0aede,d1d4f9`;
 
   const navigateToListings = () => {
@@ -40,6 +50,8 @@ const Dashboard = ({ user }) => {
       } catch (error) {
         console.error('Error fetching project data:', error);
         setProjectData([]);
+      } finally {
+        setLoading(false);
       }
     }
     fetchProjects();
@@ -77,7 +89,7 @@ const Dashboard = ({ user }) => {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {repeatProjectCard(projectData, 'Java')}
+            {repeatProjectCard(projectData, 'Java', loading)}
           </div>
         </div>
 
@@ -93,7 +105,7 @@ const Dashboard = ({ user }) => {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {repeatProjectCard(projectData, 'SQL')}
+            {repeatProjectCard(projectData, 'SQL', loading)}
           </div>
         </div>
 
@@ -103,13 +115,13 @@ const Dashboard = ({ user }) => {
             <h2 className="text-xl md:text-2xl font-semibold">Python Projects</h2>
             <button
               onClick={navigateToListings}
-              className="px-3 md:px-4 py-2 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition text-xs md:text-lgn"
+              className="px-3 md:px-4 py-2 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition text-xs md:text-lg"
             >
               Explore More
             </button>
           </div>
-          <div className="grid grid-cols-1 mmd:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {repeatProjectCard(projectData, 'Python')}
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {repeatProjectCard(projectData, 'Python', loading)}
           </div>
         </div>
       </div>

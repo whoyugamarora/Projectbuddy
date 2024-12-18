@@ -3,9 +3,12 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'; // Correct import
 import ReusableCard from '../../components/Ideacard/Ideacard';
+import BasicCardSkeleton from '../../components/Projectcard/BasicCardSkeleton';
+
 
 const IdeasList = () => {
     const [ideas, setIdeas] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchIdeas = async () => {
@@ -14,6 +17,8 @@ const IdeasList = () => {
                 setIdeas(response.data);
             } catch (err) {
                 console.error('Failed to fetch ideas:', err.message);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -38,18 +43,25 @@ const IdeasList = () => {
                     Project Ideas
                 </h2>
                 <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-0">
-                    {ideas.map((idea) => (
-                        <ReusableCard
-                            key={idea._id}
-                            avatarSeed={idea.email}
-                            title={idea.title}
-                            author={idea.author}
-                            description={idea.description}
-                            votes={idea.votes}
-                            createdAt={idea.createdAt}
-                            onUpvote={() => handleUpvote(idea._id)}
-                        />
-                    ))}
+                    {loading
+                        ? // Show skeleton loader while loading
+                        Array(3)
+                            .fill(0)
+                            .map((_, index) => <BasicCardSkeleton key={index} />)
+                        :
+                            ideas.map((idea) => (
+                                <ReusableCard
+                                    key={idea._id}
+                                    avatarSeed={idea.email}
+                                    title={idea.title}
+                                    author={idea.author}
+                                    description={idea.description}
+                                    votes={idea.votes}
+                                    createdAt={idea.createdAt}
+                                    onUpvote={() => handleUpvote(idea._id)}
+                                />
+                            ))
+                        }
                 </ul>
             </div>
         </div>

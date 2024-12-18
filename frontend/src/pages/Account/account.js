@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../../components/Navbar/index';
 import BasicCard from '../../components/Projectcard/projectcard';
 import ReusableCard from '../../components/Ideacard/Ideacard';
+import BasicCardSkeleton from '../../components/Projectcard/BasicCardSkeleton';
 
 const AccountPage = ({ user }) => {
     const [mylistings, setMylistings] = useState([]);
@@ -10,6 +11,7 @@ const AccountPage = ({ user }) => {
     const [formIsOpen, setFormIsOpen] = useState(false);
     const [skill, setSkill] = useState('');
     const [skills, setSkills] = useState([]);
+    const [loading, setLoading] = useState(true);
     const avatarUrl = `https://api.dicebear.com/9.x/micah/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4,c0aede,d1d4f9`;
 
     useEffect(() => {
@@ -24,6 +26,8 @@ const AccountPage = ({ user }) => {
                 setMyIdeas(myIdeas);
             } catch (error) {
                 console.error("Error fetching user listings:", error);
+            } finally {
+                setLoading(false);
             }
         }
         fetchMyListings();
@@ -146,45 +150,58 @@ const AccountPage = ({ user }) => {
                     <div className='my-4'>
                         <h3 className="text-xl font-semibold text-gray-800 mb-4">My Posts</h3>
                         <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                            {mylistings.length > 0 ? (
-                                mylistings.map((project) => (
-                                    <BasicCard
-                                        key={project.id || project._id}
-                                        userId={project.userId}
-                                        currentUserEmail={user.email}
-                                        project={project}
-                                        title={project.title}
-                                        subheader={project.author}
-                                        description={project.description}
-                                        stack={project.stack}
-                                        email={project.email}
-                                        onDelete={deleteProject}
-                                    />
-                                ))
-                            ) : (
-                                <p className="text-sm text-gray-500">No projects found</p>
-                            )}
+                            {loading
+                                ? // Show skeleton loader while loading
+                                Array(3)
+                                    .fill(0)
+                                    .map((_, index) => <BasicCardSkeleton key={index} />)
+                                :
+                                mylistings.length > 0 ? (
+                                    mylistings.map((project) => (
+                                        <BasicCard
+                                            key={project.id || project._id}
+                                            userId={project.userId}
+                                            currentUserEmail={user.email}
+                                            project={project}
+                                            title={project.title}
+                                            subheader={project.author}
+                                            description={project.description}
+                                            stack={project.stack}
+                                            email={project.email}
+                                            onDelete={deleteProject}
+                                        />
+                                    ))
+                                ) : (
+                                    <p className="text-sm text-gray-500">No projects found</p>
+                                )
+                            }
                         </div>
                     </div>
 
                     <div>
                         <h3 className="text-xl font-semibold text-gray-800 mb-4">My Ideas</h3>
                         <div className="list-none grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                            {myIdeas.length > 0 ? (
-                                myIdeas.map((idea) => (
-                                    <ReusableCard
-                                        key={idea._id}
-                                        avatarSeed={idea.email}
-                                        title={idea.title}
-                                        author={idea.author}
-                                        description={idea.description}
-                                        votes={idea.votes}
-                                        createdAt={idea.createdAt}
-                                    />
-                                ))
-                            ) : (
-                                <p className="text-sm text-gray-500">No Ideas found</p>
-                            )}
+                            {loading
+                                ? // Show skeleton loader while loading
+                                Array(3)
+                                    .fill(0)
+                                    .map((_, index) => <BasicCardSkeleton key={index} />)
+                                :
+                                myIdeas.length > 0 ? (
+                                    myIdeas.map((idea) => (
+                                        <ReusableCard
+                                            key={idea._id}
+                                            avatarSeed={idea.email}
+                                            title={idea.title}
+                                            author={idea.author}
+                                            description={idea.description}
+                                            votes={idea.votes}
+                                            createdAt={idea.createdAt}
+                                        />
+                                    ))
+                                ) : (
+                                    <p className="text-sm text-gray-500">No Ideas found</p>
+                                )}
                         </div>
                     </div>
                 </div>
